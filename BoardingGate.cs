@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+// BoardingGate.cs
 namespace PRG_2_Assignment
 {
     internal class BoardingGate
@@ -24,7 +25,13 @@ namespace PRG_2_Assignment
 
         public double CalculateFees()
         {
-            return 300 + (AssignedFlight?.CalculateFees() ?? 0);
+            double gateBaseFee = 300; // Every gate has a base fee
+            return gateBaseFee + (AssignedFlight?.CalculateFees() ?? 0);
+        }
+
+        public override string ToString()
+        {
+            return $"{GateName,-5} {SupportsDDJB,-8} {SupportsCFFT,-8} {SupportsLWTT,-8}";
         }
     }
 }
