@@ -43,5 +43,20 @@ namespace PRG_2_Assignment
             }
             return total;
         }
+
+        public override string ToString()
+        {
+            string flightDetails = "\n=============================================";
+            flightDetails += "\nList of Flights for " + Name;
+            flightDetails += "\n=============================================";
+            flightDetails += string.Format("\n{0,-12} {1,-20} {2,-20} {3,-20} {4,-25}", "Flight No.", "Origin", "Destination", "Expected Time", "Status");
+            
+            foreach (var flight in Flights.Values)
+            {
+                flightDetails += "\n" + flight.ToString();
+            }
+            
+            return flightDetails;
+        }
     }
 }
