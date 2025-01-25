@@ -29,9 +29,26 @@ namespace PRG_2_Assignment
             return gateBaseFee + (AssignedFlight?.CalculateFees() ?? 0);
         }
 
+        public void AssignFlight(Flight flight)
+        {
+            if (AssignedFlight == null)
+            {
+                AssignedFlight = flight;
+            }
+            else
+            {
+                Console.WriteLine($"Error: Boarding Gate {GateName} is already assigned to Flight {AssignedFlight.FlightNumber}.");
+            }
+        }
+
+        public void RemoveAssignedFlight()
+        {
+            AssignedFlight = null;
+        }
+
         public override string ToString()
         {
-            return $"{GateName,-5} {SupportsDDJB,-8} {SupportsCFFT,-8} {SupportsLWTT,-8}";
+            return string.Format("{0,-10} {1,-10} {2,-10} {3,-10}", GateName, SupportsDDJB, SupportsCFFT, SupportsLWTT);
         }
     }
 }

@@ -47,7 +47,6 @@ namespace PRG_2_Assignment
             {
                 Flights.Add(flight.FlightNumber, flight);
 
-                // Ensure the flight is added to the respective airline
                 if (Airlines.ContainsKey(flight.Airline.Code))
                 {
                     Airlines[flight.Airline.Code].AddFlight(flight);
@@ -63,9 +62,17 @@ namespace PRG_2_Assignment
             return false;
         }
 
-        public Airline GetAirlineFromFlight(Flight flight)
+        public void PrintBoardingGates()
         {
-            return Airlines.ContainsKey(flight.Airline.Code) ? Airlines[flight.Airline.Code] : null;
+            Console.WriteLine("=============================================");
+            Console.WriteLine("List of Boarding Gates for Changi Airport Terminal 5");
+            Console.WriteLine("=============================================");
+            Console.WriteLine(string.Format("{0,-10} {1,-10} {2,-10} {3,-10}", "Gate Name", "DDJB", "CFFT", "LWTT"));
+            
+            foreach (var gate in BoardingGates.Values)
+            {
+                Console.WriteLine(gate.ToString());
+            }
         }
 
         public void PrintAirlineFees()
@@ -80,12 +87,27 @@ namespace PRG_2_Assignment
             {
                 double airlineFee = airline.CalculateFees();
                 totalTerminalFees += airlineFee;
-                Console.WriteLine($"{airline.Name} Fees: ${airlineFee}");
+                Console.WriteLine(string.Format("{0,-20} Fees: ${1,-10:N2}", airline.Name, airlineFee));
             }
 
             Console.WriteLine("\n=====================================");
-            Console.WriteLine($"Total Fees Collected by Terminal 5: ${totalTerminalFees}");
+            Console.WriteLine(string.Format("Total Fees Collected by Terminal 5: ${0,-10:N2}", totalTerminalFees));
             Console.WriteLine("=====================================");
+        }
+
+        public override string ToString()
+        {
+            string gateDetails = "\n=============================================";
+            gateDetails += "\nList of Boarding Gates for Changi Airport Terminal 5";
+            gateDetails += "\n=============================================";
+            gateDetails += string.Format("\n{0,-10} {1,-10} {2,-10} {3,-10}", "Gate Name", "DDJB", "CFFT", "LWTT");
+            
+            foreach (var gate in BoardingGates.Values)
+            {
+                gateDetails += "\n" + gate.ToString();
+            }
+
+            return gateDetails;
         }
     }
 }
