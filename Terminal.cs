@@ -12,7 +12,6 @@ namespace PRG_2_Assignment
         public Dictionary<string, Airline> Airlines { get; private set; }
         public Dictionary<string, Flight> Flights { get; private set; }
         public Dictionary<string, BoardingGate> BoardingGates { get; private set; }
-        public Dictionary<string, double> GateFees { get; private set; }
 
         public Terminal(string terminalName)
         {
@@ -20,7 +19,6 @@ namespace PRG_2_Assignment
             Airlines = new Dictionary<string, Airline>();
             Flights = new Dictionary<string, Flight>();
             BoardingGates = new Dictionary<string, BoardingGate>();
-            GateFees = new Dictionary<string, double>();
         }
 
         public bool AddAirline(Airline airline)
@@ -43,6 +41,28 @@ namespace PRG_2_Assignment
             return false;
         }
 
+        public bool AddFlight(Flight flight)
+        {
+            if (!Flights.ContainsKey(flight.FlightNumber))
+            {
+                Flights.Add(flight.FlightNumber, flight);
+
+                // Ensure the flight is added to the respective airline
+                if (Airlines.ContainsKey(flight.Airline.Code))
+                {
+                    Airlines[flight.Airline.Code].AddFlight(flight);
+                }
+                else
+                {
+                    Console.WriteLine($"Error: Airline {flight.Airline.Code} not found.");
+                    return false;
+                }
+
+                return true;
+            }
+            return false;
+        }
+
         public Airline GetAirlineFromFlight(Flight flight)
         {
             return Airlines.ContainsKey(flight.Airline.Code) ? Airlines[flight.Airline.Code] : null;
@@ -50,10 +70,22 @@ namespace PRG_2_Assignment
 
         public void PrintAirlineFees()
         {
+            double totalTerminalFees = 0;
+
+            Console.WriteLine("\n=====================================");
+            Console.WriteLine("Airline Fees Summary for Terminal 5");
+            Console.WriteLine("=====================================");
+
             foreach (var airline in Airlines.Values)
             {
-                Console.WriteLine($"{airline.Name} Fees: ${airline.CalculateFees()}");
+                double airlineFee = airline.CalculateFees();
+                totalTerminalFees += airlineFee;
+                Console.WriteLine($"{airline.Name} Fees: ${airlineFee}");
             }
+
+            Console.WriteLine("\n=====================================");
+            Console.WriteLine($"Total Fees Collected by Terminal 5: ${totalTerminalFees}");
+            Console.WriteLine("=====================================");
         }
     }
 }
