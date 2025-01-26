@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PRG_2_Assignment
 {
-    internal class DDJBFlight
+    internal class DDJBFlight : Flight
     {
         private const double RequestFee = 300;
 
@@ -15,7 +15,7 @@ namespace PRG_2_Assignment
 
         public override double CalculateFees()
         {
-            return 800 + RequestFee;
-        }
+            return base.CalculateFees() + RequestFee;
+        }   
     }
 }

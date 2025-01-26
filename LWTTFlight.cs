@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PRG_2_Assignment
 {
-    internal class LWTTFlight
+    internal class LWTTFlight : Flight
     {
         private const double RequestFee = 500;
 
@@ -15,7 +15,8 @@ namespace PRG_2_Assignment
 
         public override double CalculateFees()
         {
-            return 800 + RequestFee;
+            return base.CalculateFees() + RequestFee;
         }
     }
 }
+
