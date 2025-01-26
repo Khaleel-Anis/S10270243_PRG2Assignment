@@ -1,4 +1,11 @@
-﻿namespace PRG_2_Assignment
+﻿//==========================================================
+// Student Number : S10270243
+// Student Number : S10269256
+// Student Name : Khaleel Anis
+// Partner Name : Hia Wei Dai
+//==========================================================
+
+namespace PRG_2_Assignment
 {
     internal class Program
     {
