@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\yowha\\Documents\\Programming Stuff\\S10270243_PRG2Assignment\\PRG 2_Assignment.csproj",
+      "projectUniqueName": "C:\\Users\\yowha\\Downloads\\S10270243_PRG2Assignment\\S10270243_PRG2Assignment\\PRG 2_Assignment.csproj",
       "projectName": "PRG 2_Assignment",
-      "projectPath": "C:\\Users\\yowha\\Documents\\Programming Stuff\\S10270243_PRG2Assignment\\PRG 2_Assignment.csproj",
+      "projectPath": "C:\\Users\\yowha\\Downloads\\S10270243_PRG2Assignment\\S10270243_PRG2Assignment\\PRG 2_Assignment.csproj",
       "packagesPath": "C:\\Users\\yowha\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\yowha\\Documents\\Programming Stuff\\S10270243_PRG2Assignment\\obj\\",
+      "outputPath": "C:\\Users\\yowha\\Downloads\\S10270243_PRG2Assignment\\S10270243_PRG2Assignment\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\yowha\\AppData\\Roaming\\NuGet\\NuGet.Config"

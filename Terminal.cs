@@ -53,17 +53,6 @@ namespace PRG_2_Assignment
             if (!Flights.ContainsKey(flight.FlightNumber))
             {
                 Flights.Add(flight.FlightNumber, flight);
-
-                if (Airlines.ContainsKey(flight.Airline.Code))
-                {
-                    Airlines[flight.Airline.Code].AddFlight(flight);
-                }
-                else
-                {
-                    Console.WriteLine($"Error: Airline {flight.Airline.Code} not found.");
-                    return false;
-                }
-
                 return true;
             }
             return false;
@@ -75,31 +64,35 @@ namespace PRG_2_Assignment
             Console.WriteLine("List of Boarding Gates for Changi Airport Terminal 5");
             Console.WriteLine("=============================================");
             Console.WriteLine(string.Format("{0,-10} {1,-10} {2,-10} {3,-10}", "Gate Name", "DDJB", "CFFT", "LWTT"));
-            
+
             foreach (var gate in BoardingGates.Values)
             {
                 Console.WriteLine(gate.ToString());
             }
         }
 
-        public void PrintAirlineFees()
+        public bool AssignBoardingGate(string flightNumber, string gateName)
         {
-            double totalTerminalFees = 0;
-
-            Console.WriteLine("\n=====================================");
-            Console.WriteLine("Airline Fees Summary for Terminal 5");
-            Console.WriteLine("=====================================");
-
-            foreach (var airline in Airlines.Values)
+            if (Flights.ContainsKey(flightNumber) && BoardingGates.ContainsKey(gateName))
             {
-                double airlineFee = airline.CalculateFees();
-                totalTerminalFees += airlineFee;
-                Console.WriteLine(string.Format("{0,-20} Fees: ${1,-10:N2}", airline.Name, airlineFee));
-            }
+                Flight flight = Flights[flightNumber];
+                BoardingGate gate = BoardingGates[gateName];
 
-            Console.WriteLine("\n=====================================");
-            Console.WriteLine(string.Format("Total Fees Collected by Terminal 5: ${0,-10:N2}", totalTerminalFees));
-            Console.WriteLine("=====================================");
+                if (gate.AssignedFlight == null)
+                {
+                    flight.AssignGate(gate);
+                    return true;
+                }
+                else
+                {
+                    Console.WriteLine("Error: Gate already occupied.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Error: Flight or gate not found.");
+            }
+            return false;
         }
 
         public override string ToString()
@@ -107,11 +100,13 @@ namespace PRG_2_Assignment
             string gateDetails = "\n=============================================";
             gateDetails += "\nList of Boarding Gates for Changi Airport Terminal 5";
             gateDetails += "\n=============================================";
-            gateDetails += string.Format("\n{0,-10} {1,-10} {2,-10} {3,-10}", "Gate Name", "DDJB", "CFFT", "LWTT");
-            
+            gateDetails += string.Format("\n{0,-10} {1,-10} {2,-10} {3,-10} {4,-15}", "Gate Name", "DDJB", "CFFT", "LWTT", "Assigned Flight");
+
             foreach (var gate in BoardingGates.Values)
             {
-                gateDetails += "\n" + gate.ToString();
+                string assignedFlight = gate.AssignedFlight != null ? gate.AssignedFlight.FlightNumber : "None";
+                gateDetails += string.Format("\n{0,-10} {1,-10} {2,-10} {3,-10} {4,-15}",
+                                             gate.GateName, gate.SupportsDDJB, gate.SupportsCFFT, gate.SupportsLWTT, assignedFlight);
             }
 
             return gateDetails;

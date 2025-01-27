@@ -11,7 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-// BoardingGate.cs
+
 namespace PRG_2_Assignment
 {
     internal class BoardingGate
@@ -28,12 +28,6 @@ namespace PRG_2_Assignment
             SupportsCFFT = supportsCFFT;
             SupportsDDJB = supportsDDJB;
             SupportsLWTT = supportsLWTT;
-        }
-
-        public double CalculateFees()
-        {
-            double gateBaseFee = 300; // Every gate has a base fee
-            return gateBaseFee + (AssignedFlight?.CalculateFees() ?? 0);
         }
 
         public void AssignFlight(Flight flight)
@@ -55,7 +49,8 @@ namespace PRG_2_Assignment
 
         public override string ToString()
         {
-            return string.Format("{0,-10} {1,-10} {2,-10} {3,-10}", GateName, SupportsDDJB, SupportsCFFT, SupportsLWTT);
+            string assignedFlight = AssignedFlight != null ? AssignedFlight.FlightNumber : "None";
+            return string.Format("{0,-10} {1,-10} {2,-10} {3,-10} {4,-15}", GateName, SupportsDDJB, SupportsCFFT, SupportsLWTT, assignedFlight);
         }
     }
 }

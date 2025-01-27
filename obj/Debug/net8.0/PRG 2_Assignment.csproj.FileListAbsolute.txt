@@ -1,0 +1,17 @@
+D:\School Stuff\PRG2\S10270243_PRG2Assignment-main\S10270243_PRG2Assignment-main\obj\Debug\net8.0\PRG 2_Assignment.GeneratedMSBuildEditorConfig.editorconfig
+D:\School Stuff\PRG2\S10270243_PRG2Assignment-main\S10270243_PRG2Assignment-main\obj\Debug\net8.0\PRG 2_Assignment.AssemblyInfoInputs.cache
+D:\School Stuff\PRG2\S10270243_PRG2Assignment-main\S10270243_PRG2Assignment-main\obj\Debug\net8.0\PRG 2_Assignment.AssemblyInfo.cs
+D:\School Stuff\PRG2\S10270243_PRG2Assignment-main\S10270243_PRG2Assignment-main\obj\Debug\net8.0\PRG 2_Assignment.csproj.CoreCompileInputs.cache
+D:\School Stuff\PRG2\S10270243_PRG2Assignment-main\S10270243_PRG2Assignment-main\bin\Debug\net8.0\PRG 2_Assignment.exe
+D:\School Stuff\PRG2\S10270243_PRG2Assignment-main\S10270243_PRG2Assignment-main\bin\Debug\net8.0\PRG 2_Assignment.deps.json
+D:\School Stuff\PRG2\S10270243_PRG2Assignment-main\S10270243_PRG2Assignment-main\bin\Debug\net8.0\PRG 2_Assignment.runtimeconfig.json
+D:\School Stuff\PRG2\S10270243_PRG2Assignment-main\S10270243_PRG2Assignment-main\bin\Debug\net8.0\PRG 2_Assignment.dll
+D:\School Stuff\PRG2\S10270243_PRG2Assignment-main\S10270243_PRG2Assignment-main\bin\Debug\net8.0\PRG 2_Assignment.pdb
+D:\School Stuff\PRG2\S10270243_PRG2Assignment-main\S10270243_PRG2Assignment-main\obj\Debug\net8.0\PRG 2_Assignment.dll
+D:\School Stuff\PRG2\S10270243_PRG2Assignment-main\S10270243_PRG2Assignment-main\obj\Debug\net8.0\refint\PRG 2_Assignment.dll
+D:\School Stuff\PRG2\S10270243_PRG2Assignment-main\S10270243_PRG2Assignment-main\obj\Debug\net8.0\PRG 2_Assignment.pdb
+D:\School Stuff\PRG2\S10270243_PRG2Assignment-main\S10270243_PRG2Assignment-main\obj\Debug\net8.0\PRG 2_Assignment.genruntimeconfig.cache
+D:\School Stuff\PRG2\S10270243_PRG2Assignment-main\S10270243_PRG2Assignment-main\obj\Debug\net8.0\ref\PRG 2_Assignment.dll
+D:\School Stuff\PRG2\S10270243_PRG2Assignment-main\S10270243_PRG2Assignment-main\bin\Debug\net8.0\airlines.csv
+D:\School Stuff\PRG2\S10270243_PRG2Assignment-main\S10270243_PRG2Assignment-main\bin\Debug\net8.0\boardinggates.csv
+D:\School Stuff\PRG2\S10270243_PRG2Assignment-main\S10270243_PRG2Assignment-main\bin\Debug\net8.0\flights.csv
