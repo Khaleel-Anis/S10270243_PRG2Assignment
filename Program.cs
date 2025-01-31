@@ -31,6 +31,7 @@ namespace PRG_2_Assignment
                 Console.WriteLine("1. List All Flights");
                 Console.WriteLine("2. List Boarding Gates");
                 Console.WriteLine("4. Create Flight");
+                Console.WriteLine("7. Display Flight Schedule");
                 Console.WriteLine("0. Exit");
                 Console.Write("\nPlease select your option: ");
 
@@ -46,6 +47,9 @@ namespace PRG_2_Assignment
                         break;
                     case "4":
                         CreateFlight(terminal);
+                        break;
+                    case "7":
+                        DisplayFlightSchedule(terminal);
                         break;
                     case "0":
                         Console.WriteLine("\nGoodbye!");
@@ -263,6 +267,35 @@ namespace PRG_2_Assignment
                 }
             }
             Console.WriteLine("Flights loaded successfully.");
+        }
+
+        static void DisplayFlightSchedule(Terminal terminal)
+        {
+            Console.WriteLine("\n=============================================");
+            Console.WriteLine("Flight Schedule for Changi Airport Terminal 5");
+            Console.WriteLine("=============================================");
+            Console.WriteLine("Flight Number  Airline Name         Origin                 Destination            Expected");
+            Console.WriteLine("Departure/Arrival Time   Status      Boarding Gate");
+
+            if (terminal.Flights.Count == 0)
+            {
+                Console.WriteLine("No scheduled flights available.");
+                return;
+            }
+
+            // Sort flights by expected departure/arrival time
+            List<Flight> sortedFlights = new List<Flight>(terminal.Flights.Values);
+            sortedFlights.Sort((f1, f2) => f1.ExpectedTime.CompareTo(f2.ExpectedTime));
+
+            foreach (var flight in sortedFlights)
+            {
+                string gate = flight.AssignedGate != null ? flight.AssignedGate.GateName : "Unassigned";
+                Console.WriteLine(string.Format("{0,-15} {1,-22} {2,-25} {3,-25} {4,-15}",
+                    flight.FlightNumber, flight.Airline.Name, flight.Origin, flight.Destination,
+                    flight.ExpectedTime.ToString("d/M/yyyy")));
+                Console.WriteLine(string.Format("{0,-25} {1,-12} {2,-15}",
+                    flight.ExpectedTime.ToString("h:mm:00 tt"), "Scheduled", gate));
+            }
         }
     }
 }
