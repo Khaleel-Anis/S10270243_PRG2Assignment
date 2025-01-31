@@ -77,6 +77,7 @@ namespace PRG_2_Assignment
                 string destination = Console.ReadLine().Trim();
 
                 // Get expected departure/arrival time
+                // month needs 0 in front if month is 01
                 Console.Write("Enter Expected Departure/Arrival Time (dd/mm/yyyy hh:mm): ");
                 string dateTimeString = Console.ReadLine().Trim();
                 if (!DateTime.TryParseExact(dateTimeString, "dd/MM/yyyy HH:mm", null, System.Globalization.DateTimeStyles.None, out DateTime expectedTime))
