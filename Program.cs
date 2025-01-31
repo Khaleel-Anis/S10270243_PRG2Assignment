@@ -30,6 +30,7 @@ namespace PRG_2_Assignment
                 Console.WriteLine("=============================================");
                 Console.WriteLine("1. List All Flights");
                 Console.WriteLine("2. List Boarding Gates");
+                Console.WriteLine("4. Create Flight");
                 Console.WriteLine("0. Exit");
                 Console.Write("\nPlease select your option: ");
 
@@ -43,6 +44,9 @@ namespace PRG_2_Assignment
                     case "2":
                         terminal.PrintBoardingGates();
                         break;
+                    case "4":
+                        CreateFlight(terminal);
+                        break;
                     case "0":
                         Console.WriteLine("\nGoodbye!");
                         return;
@@ -51,6 +55,86 @@ namespace PRG_2_Assignment
                         break;
                 }
             }
+        }
+
+        static void CreateFlight(Terminal terminal)
+        {
+            Console.WriteLine("\n=============================================");
+            Console.WriteLine("Create a New Flight");
+            Console.WriteLine("=============================================");
+
+            // Get flight number
+            Console.Write("Enter Flight Number: ");
+            string flightNumber = Console.ReadLine().Trim();
+            if (terminal.Flights.ContainsKey(flightNumber))
+            {
+                Console.WriteLine("Error: Flight number already exists.");
+                return;
+            }
+
+            // Get airline code
+            Console.Write("Enter Airline Code: ");
+            string airlineCode = Console.ReadLine().Trim();
+            if (!terminal.Airlines.ContainsKey(airlineCode))
+            {
+                Console.WriteLine("Error: Airline not found.");
+                return;
+            }
+            Airline airline = terminal.Airlines[airlineCode];
+
+            // Get origin and destination
+            Console.Write("Enter Origin: ");
+            string origin = Console.ReadLine().Trim();
+            Console.Write("Enter Destination: ");
+            string destination = Console.ReadLine().Trim();
+
+            // Get expected date
+            Console.Write("Enter Expected Date (dd/MM/yyyy): ");
+            string dateString = Console.ReadLine().Trim();
+            if (!DateTime.TryParseExact(dateString, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime expectedDate))
+            {
+                Console.WriteLine("Error: Invalid date format.");
+                return;
+            }
+
+            // Get expected time
+            Console.Write("Enter Expected Departure/Arrival Time (h:mm tt): ");
+            string timeString = Console.ReadLine().Trim();
+            if (!DateTime.TryParseExact(timeString, "h:mm tt", null, System.Globalization.DateTimeStyles.None, out DateTime expectedTime))
+            {
+                Console.WriteLine("Error: Invalid time format.");
+                return;
+            }
+
+            // Combine date and time
+            DateTime fullExpectedTime = new DateTime(expectedDate.Year, expectedDate.Month, expectedDate.Day,
+                                                     expectedTime.Hour, expectedTime.Minute, 0);
+
+            // Get special request code
+            Console.Write("Enter Special Request Code (CFFT, DDJB, LWTT) or leave blank: ");
+            string specialRequest = Console.ReadLine().Trim().ToUpper();
+
+            // Determine flight type based on special request
+            Flight flight;
+            switch (specialRequest)
+            {
+                case "CFFT":
+                    flight = new CFFTFlight(flightNumber, airline, origin, destination, fullExpectedTime);
+                    break;
+                case "DDJB":
+                    flight = new DDJBFlight(flightNumber, airline, origin, destination, fullExpectedTime);
+                    break;
+                case "LWTT":
+                    flight = new LWTTFlight(flightNumber, airline, origin, destination, fullExpectedTime);
+                    break;
+                default:
+                    flight = new NORMFlight(flightNumber, airline, origin, destination, fullExpectedTime);
+                    break;
+            }
+
+            // Add flight to terminal
+            terminal.AddFlight(flight);
+            Console.WriteLine($"Flight {flightNumber} successfully created.");
         }
 
         static void LoadAirlines(Terminal terminal)

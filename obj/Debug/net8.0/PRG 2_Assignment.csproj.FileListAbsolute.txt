@@ -15,3 +15,21 @@ D:\School Stuff\PRG2\S10270243_PRG2Assignment-main\S10270243_PRG2Assignment-main
 D:\School Stuff\PRG2\S10270243_PRG2Assignment-main\S10270243_PRG2Assignment-main\bin\Debug\net8.0\airlines.csv
 D:\School Stuff\PRG2\S10270243_PRG2Assignment-main\S10270243_PRG2Assignment-main\bin\Debug\net8.0\boardinggates.csv
 D:\School Stuff\PRG2\S10270243_PRG2Assignment-main\S10270243_PRG2Assignment-main\bin\Debug\net8.0\flights.csv
+C:\Users\yowha\Documents\Programming Stuff\Prg2\bin\Debug\net8.0\PRG 2_Assignment.exe
+C:\Users\yowha\Documents\Programming Stuff\Prg2\bin\Debug\net8.0\airlines.csv
+C:\Users\yowha\Documents\Programming Stuff\Prg2\bin\Debug\net8.0\boardinggates.csv
+C:\Users\yowha\Documents\Programming Stuff\Prg2\bin\Debug\net8.0\flights.csv
+C:\Users\yowha\Documents\Programming Stuff\Prg2\bin\Debug\net8.0\PRG 2_Assignment.deps.json
+C:\Users\yowha\Documents\Programming Stuff\Prg2\bin\Debug\net8.0\PRG 2_Assignment.runtimeconfig.json
+C:\Users\yowha\Documents\Programming Stuff\Prg2\bin\Debug\net8.0\PRG 2_Assignment.dll
+C:\Users\yowha\Documents\Programming Stuff\Prg2\bin\Debug\net8.0\PRG 2_Assignment.pdb
+C:\Users\yowha\Documents\Programming Stuff\Prg2\obj\Debug\net8.0\PRG 2_Assignment.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yowha\Documents\Programming Stuff\Prg2\obj\Debug\net8.0\PRG 2_Assignment.AssemblyInfoInputs.cache
+C:\Users\yowha\Documents\Programming Stuff\Prg2\obj\Debug\net8.0\PRG 2_Assignment.AssemblyInfo.cs
+C:\Users\yowha\Documents\Programming Stuff\Prg2\obj\Debug\net8.0\PRG 2_Assignment.csproj.CoreCompileInputs.cache
+C:\Users\yowha\Documents\Programming Stuff\Prg2\obj\Debug\net8.0\PRG 2_Assignment.sourcelink.json
+C:\Users\yowha\Documents\Programming Stuff\Prg2\obj\Debug\net8.0\PRG 2_Assignment.dll
+C:\Users\yowha\Documents\Programming Stuff\Prg2\obj\Debug\net8.0\refint\PRG 2_Assignment.dll
+C:\Users\yowha\Documents\Programming Stuff\Prg2\obj\Debug\net8.0\PRG 2_Assignment.pdb
+C:\Users\yowha\Documents\Programming Stuff\Prg2\obj\Debug\net8.0\PRG 2_Assignment.genruntimeconfig.cache
+C:\Users\yowha\Documents\Programming Stuff\Prg2\obj\Debug\net8.0\ref\PRG 2_Assignment.dll
