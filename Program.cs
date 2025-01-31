@@ -22,7 +22,7 @@ namespace PRG_2_Assignment
             LoadAirlines(terminal);
             LoadBoardingGates(terminal);
             LoadFlights(terminal);
-
+            //
             while (true)
             {
                 Console.WriteLine("\n=============================================");
