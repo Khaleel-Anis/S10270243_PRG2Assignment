@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\hiawe\\Source\\Repos\\S10270243_PRG2Assignment3\\S10270243_PRG2Assignment.csproj": {}
+    "C:\\Users\\hiawe\\source\\repos\\S10270243_PRG2Assignment3\\S10270243_PRG2Assignment.csproj": {}
   },
   "projects": {
-    "C:\\Users\\hiawe\\Source\\Repos\\S10270243_PRG2Assignment3\\S10270243_PRG2Assignment.csproj": {
+    "C:\\Users\\hiawe\\source\\repos\\S10270243_PRG2Assignment3\\S10270243_PRG2Assignment.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\hiawe\\Source\\Repos\\S10270243_PRG2Assignment3\\S10270243_PRG2Assignment.csproj",
+        "projectUniqueName": "C:\\Users\\hiawe\\source\\repos\\S10270243_PRG2Assignment3\\S10270243_PRG2Assignment.csproj",
         "projectName": "S10270243_PRG2Assignment",
-        "projectPath": "C:\\Users\\hiawe\\Source\\Repos\\S10270243_PRG2Assignment3\\S10270243_PRG2Assignment.csproj",
+        "projectPath": "C:\\Users\\hiawe\\source\\repos\\S10270243_PRG2Assignment3\\S10270243_PRG2Assignment.csproj",
         "packagesPath": "C:\\Users\\hiawe\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\hiawe\\Source\\Repos\\S10270243_PRG2Assignment3\\obj\\",
+        "outputPath": "C:\\Users\\hiawe\\source\\repos\\S10270243_PRG2Assignment3\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
