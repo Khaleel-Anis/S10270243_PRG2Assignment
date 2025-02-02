@@ -26,7 +26,7 @@ namespace PRG_2_Assignment
         public bool SupportsCFFT { get { return supportsCFFT; } }
         public bool SupportsDDJB { get { return supportsDDJB; } }
         public bool SupportsLWTT { get { return supportsLWTT; } }
-        public Flight? AssignedFlight { get { return assignedFlight; } }
+        public Flight AssignedFlight { get { return assignedFlight; } }
 
         public BoardingGate(string gateName, bool supportsCFFT, bool supportsDDJB, bool supportsLWTT)
         {
@@ -41,17 +41,15 @@ namespace PRG_2_Assignment
         {
             if (assignedFlight != null)
             {
-                Console.WriteLine($"Error: Boarding Gate {gateName} is already assigned to Flight {assignedFlight.FlightNumber}.");
-                return false;
+                return false; // Gate already occupied
             }
 
-            // Ensure gate supports flight type
+            // Validate if gate supports the flight's special request type
             if ((flight is CFFTFlight && !supportsCFFT) ||
                 (flight is DDJBFlight && !supportsDDJB) ||
                 (flight is LWTTFlight && !supportsLWTT))
             {
-                Console.WriteLine($"Error: Boarding Gate {gateName} does not support this flight type.");
-                return false;
+                return false; // Gate does not support flight type
             }
 
             assignedFlight = flight;
