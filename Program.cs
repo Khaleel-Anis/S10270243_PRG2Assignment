@@ -35,12 +35,11 @@ namespace S10270243_PRG2Assignment
             }
             Console.WriteLine($"{totalFlights} Flights Loaded!");
 
-            Console.WriteLine("\n=============================================");
-            Console.WriteLine("Welcome to Changi Airport Terminal 5 System!");
-            Console.WriteLine("=============================================");
-
             while (true)
             {
+                Console.WriteLine("\n=============================================");
+                Console.WriteLine("Welcome to Changi Airport Terminal 5 System!");
+                Console.WriteLine("=============================================");
                 Console.WriteLine("\n1. List All Flights");
                 Console.WriteLine("2. List Boarding Gates");
                 Console.WriteLine("0. Exit");
@@ -71,42 +70,41 @@ namespace S10270243_PRG2Assignment
             Console.WriteLine("\n=============================================");
             Console.WriteLine("List of Flights for Changi Airport Terminal 5");
             Console.WriteLine("=============================================");
-            Console.WriteLine(string.Format("{0,-15} {1,-22} {2,-25} {3,-25} {4,-15}",
+            Console.WriteLine(string.Format("{0,-12} {1,-20} {2,-20} {3,-20} {4,-12}",
                 "Flight Number", "Airline Name", "Origin", "Destination", "Expected"));
-            Console.WriteLine(string.Format("{0,-15} {1,-22} {2,-25} {3,-25} {4,-15}",
-                "Departure/Arrival Time", "", "", "", ""));
+            Console.WriteLine("Departure/Arrival Time");
 
             foreach (var airline in terminal.Airlines.Values)
             {
                 foreach (var flight in airline.Flights.Values)
                 {
-                    Console.WriteLine(string.Format("{0,-12} {1,-20} {2,-20} {3,-20}",
-                        flight.FlightNumber, airline.Name, flight.Origin, flight.Destination));
-                    Console.WriteLine($"Expected Departure/Arrival Time: {flight.ExpectedTime.ToString("d/M/yyyy h:mm:ss tt")}");
-                    Console.WriteLine(); // New line for spacing
+                    Console.WriteLine(string.Format("{0,-12} {1,-20} {2,-20} {3,-20} {4,-12}",
+                        flight.FlightNumber, airline.Name, flight.Origin, flight.Destination,
+                        flight.ExpectedTime.ToString("d/M/yyyy")));
+
+                    Console.WriteLine(string.Format("{0,-12}",
+                        flight.ExpectedTime.ToString("h:mm:ss tt")));
                 }
             }
         }
-
 
         static void ListAllBoardingGates()
         {
             Console.WriteLine("\n=============================================");
             Console.WriteLine("List of Boarding Gates for Changi Airport Terminal 5");
             Console.WriteLine("=============================================");
-            Console.WriteLine(string.Format("{0,-10} {1,-10} {2,-10} {3,-10} {4,-15}",
-                "Gate", "DDJB", "CFFT", "LWTT", "Assigned Flight"));
+            Console.WriteLine(string.Format("{0,-10} {1,-10} {2,-10} {3,-10}",
+                "Gate Name", "DDJB", "CFFT", "LWTT"));
 
             foreach (var gate in terminal.BoardingGates.Values)
             {
-                string assignedFlight = gate.AssignedFlight != null ? gate.AssignedFlight.FlightNumber : "None";
-                Console.WriteLine(string.Format("{0,-10} {1,-10} {2,-10} {3,-10} {4,-15}",
-                    gate.GateName, gate.SupportsDDJB ? "Yes" : "No",
-                    gate.SupportsCFFT ? "Yes" : "No",
-                    gate.SupportsLWTT ? "Yes" : "No",
-                    assignedFlight));
+                Console.WriteLine(string.Format("{0,-10} {1,-10} {2,-10} {3,-10}",
+                    gate.GateName, gate.SupportsDDJB ? "True" : "False",
+                    gate.SupportsCFFT ? "True" : "False",
+                    gate.SupportsLWTT ? "True" : "False"));
             }
         }
+
 
         static void LoadAirlines()
         {
