@@ -18,18 +18,31 @@ namespace PRG_2_Assignment
 
         static void Main(string[] args)
         {
+            Console.WriteLine("Loading Airlines...");
             LoadAirlines();
-            LoadBoardingGates();
-            LoadFlights();
+            Console.WriteLine($"{terminal.Airlines.Count} Airlines Loaded!");
 
-            Console.WriteLine("=============================================");
+            Console.WriteLine("Loading Boarding Gates...");
+            LoadBoardingGates();
+            Console.WriteLine($"{terminal.BoardingGates.Count} Boarding Gates Loaded!");
+
+            Console.WriteLine("Loading Flights...");
+            LoadFlights();
+            int totalFlights = 0;
+            foreach (var airline in terminal.Airlines.Values)
+            {
+                totalFlights += airline.Flights.Count;
+            }
+            Console.WriteLine($"{totalFlights} Flights Loaded!");
+
+            Console.WriteLine("\n=============================================");
             Console.WriteLine("Welcome to Changi Airport Terminal 5 System!");
             Console.WriteLine("=============================================");
 
             while (true)
             {
                 Console.WriteLine("\n1. List All Flights");
-                Console.WriteLine("2. List All Boarding Gates");
+                Console.WriteLine("2. List Boarding Gates");
                 Console.WriteLine("0. Exit");
                 Console.Write("Please select an option: ");
 
@@ -58,20 +71,22 @@ namespace PRG_2_Assignment
             Console.WriteLine("\n=============================================");
             Console.WriteLine("List of Flights for Changi Airport Terminal 5");
             Console.WriteLine("=============================================");
-            Console.WriteLine(string.Format("{0,-12} {1,-20} {2,-20} {3,-20} {4,-30}",
-                "Flight Number", "Airline Name", "Origin", "Destination", "Expected Departure/Arrival Time"));
+            Console.WriteLine(string.Format("{0,-15} {1,-22} {2,-25} {3,-25} {4,-15}",
+                "Flight Number", "Airline Name", "Origin", "Destination", "Expected"));
+            Console.WriteLine(string.Format("{0,-15} {1,-22} {2,-25} {3,-25} {4,-15}",
+                "Departure/Arrival Time", "", "", "", ""));
 
             foreach (var airline in terminal.Airlines.Values)
             {
                 foreach (var flight in airline.Flights.Values)
                 {
-                    Console.WriteLine(string.Format("{0,-12} {1,-20} {2,-20} {3,-20} {4,-30}",
-                        flight.FlightNumber, airline.Name, flight.Origin, flight.Destination,
-                        flight.ExpectedTime.ToString("d/M/yyyy h:mm:ss tt")));
+                    Console.WriteLine(string.Format("{0,-12} {1,-20} {2,-20} {3,-20}",
+                        flight.FlightNumber, airline.Name, flight.Origin, flight.Destination));
+                    Console.WriteLine($"Expected Departure/Arrival Time: {flight.ExpectedTime.ToString("d/M/yyyy h:mm:ss tt")}");
+                    Console.WriteLine(); // New line for spacing
                 }
             }
         }
-
 
 
         static void ListAllBoardingGates()
@@ -115,7 +130,6 @@ namespace PRG_2_Assignment
                     }
                 }
             }
-            Console.WriteLine("Airlines Loaded Successfully.");
         }
 
         static void LoadBoardingGates()
@@ -147,7 +161,6 @@ namespace PRG_2_Assignment
                     }
                 }
             }
-            Console.WriteLine("Boarding Gates Loaded Successfully.");
         }
 
         static void LoadFlights()
@@ -202,7 +215,6 @@ namespace PRG_2_Assignment
                     }
                 }
             }
-            Console.WriteLine("Flights Loaded Successfully.");
         }
     }
 }

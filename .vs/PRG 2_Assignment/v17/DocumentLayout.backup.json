@@ -5,14 +5,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{F4B4AF7E-7058-412F-8774-0043A7CD34C3}|PRG 2_Assignment.csproj|c:\\users\\yowha\\documents\\programming stuff\\prg2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F4B4AF7E-7058-412F-8774-0043A7CD34C3}|PRG 2_Assignment.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4B4AF7E-7058-412F-8774-0043A7CD34C3}|PRG 2_Assignment.csproj|c:\\users\\yowha\\documents\\programming stuff\\prg2\\terminal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F4B4AF7E-7058-412F-8774-0043A7CD34C3}|PRG 2_Assignment.csproj|solutionrelative:terminal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{F4B4AF7E-7058-412F-8774-0043A7CD34C3}|PRG 2_Assignment.csproj|c:\\users\\yowha\\documents\\programming stuff\\prg2\\airline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F4B4AF7E-7058-412F-8774-0043A7CD34C3}|PRG 2_Assignment.csproj|solutionrelative:airline.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,7 +14,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,39 +26,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Airline.cs",
-              "DocumentMoniker": "C:\\Users\\yowha\\Documents\\Programming Stuff\\Prg2\\Airline.cs",
-              "RelativeDocumentMoniker": "Airline.cs",
-              "ToolTip": "C:\\Users\\yowha\\Documents\\Programming Stuff\\Prg2\\Airline.cs",
-              "RelativeToolTip": "Airline.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAACMAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-02T06:38:50.357Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Terminal.cs",
-              "DocumentMoniker": "C:\\Users\\yowha\\Documents\\Programming Stuff\\Prg2\\Terminal.cs",
-              "RelativeDocumentMoniker": "Terminal.cs",
-              "ToolTip": "C:\\Users\\yowha\\Documents\\Programming Stuff\\Prg2\\Terminal.cs",
-              "RelativeToolTip": "Terminal.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAABkAAABfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-02T06:36:25.619Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\yowha\\Documents\\Programming Stuff\\Prg2\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\yowha\\Documents\\Programming Stuff\\Prg2\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAK8AAAAAAAAAAAAkwKMAAAAiAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\yowha\\Documents\\Programming Stuff\\Prg2\\Program.cs*",
+              "RelativeToolTip": "Program.cs*",
+              "ViewState": "AgIAADoAAAAAAAAAAAAgwFgAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-02T06:31:13.29Z",
+              "WhenOpened": "2025-02-02T06:52:01.075Z",
               "EditorCaption": ""
             }
           ]
