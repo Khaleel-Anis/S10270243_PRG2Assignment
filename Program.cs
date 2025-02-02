@@ -784,16 +784,16 @@ namespace S10270243_PRG2Assignment
             {
                 double airlineTotal = 0, airlineDiscount = 0;
 
-                // Retrieve flights for this airline
+                // ✅ Retrieve flights for this airline
                 List<Flight> airlineFlights = airline.Flights.Values.ToList();
 
                 foreach (var flight in airlineFlights)
                 {
-                    double flightFee = flight.CalculateFees(); // Use existing CalculateFees() method
+                    double flightFee = flight.CalculateFees(); // ✅ Use flight's CalculateFees()
                     airlineTotal += flightFee;
                 }
 
-                // Apply discount logic (e.g., 10% off for > 10 flights)
+                // ✅ Apply discount logic (e.g., 10% off for > 10 flights)
                 if (airlineFlights.Count > 10)
                 {
                     airlineDiscount = airlineTotal * 0.10;
@@ -804,17 +804,27 @@ namespace S10270243_PRG2Assignment
                 totalDiscounts += airlineDiscount;
             }
 
-            Console.WriteLine("\n--- Airline Fee Summary ---");
+            // ✅ Properly formatted output
+            Console.WriteLine("\n--- Airline Fee Breakdown ---");
             foreach (var entry in airlineFees)
             {
-                Console.WriteLine($"{entry.Key}: ${entry.Value:F2}");
+                Console.WriteLine($"\nAirline: {entry.Key}"); // ✅ Shows the airline name separately
+                if (entry.Value > 0)
+                {
+                    Console.WriteLine($"  → Total Flight Fees: ${entry.Value:F2}"); // ✅ Only shows fees if > 0
+                }
+                else
+                {
+                    Console.WriteLine("  → No flights were charged fees.");
+                }
             }
 
-            Console.WriteLine($"\nTotal Fees: ${totalFees:F2}");
-            Console.WriteLine($"Total Discounts: ${totalDiscounts:F2}");
-            Console.WriteLine($"Final Amount Collected: ${totalFees - totalDiscounts:F2}");
-            Console.WriteLine($"Discount Percentage: {(totalDiscounts / totalFees) * 100:F2}%");
+            Console.WriteLine($"\nTotal Fees from All Flights: ${totalFees:F2}");
+            Console.WriteLine($"Total Discounts Applied: ${totalDiscounts:F2}");
+            Console.WriteLine($"Final Amount Terminal Collects: ${totalFees - totalDiscounts:F2}");
+            Console.WriteLine($"Discount Percentage: {(totalDiscounts / (totalFees == 0 ? 1 : totalFees)) * 100:F2}%");
         }
+
 
     }
 }
