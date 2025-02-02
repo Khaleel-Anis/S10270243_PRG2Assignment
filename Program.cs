@@ -201,8 +201,29 @@ namespace S10270243_PRG2Assignment
                 flight.Status = "On Time"; // Default to On Time if not changed
             }
 
+            // **Final Output (Fixing Boarding Gate Header Alignment)**
+            Console.WriteLine("\n=============================================");
+            Console.WriteLine("Updated Flight Information");
+            Console.WriteLine("=============================================");
+
+            // Flight details header
+            Console.WriteLine(string.Format("{0,-15} {1,-22} {2,-25} {3,-25} {4,-15}",
+                "Flight Number", "Airline Name", "Origin", "Destination", "Expected"));
+
+            // Status, Boarding Gate, Departure/Arrival Time headers (Correctly aligned)
+            Console.WriteLine(string.Format("{0,-15} {1,-12} {2,-15}",
+                "Departure/Arrival Time", "Status", "Boarding Gate"));
+
+            Console.WriteLine(string.Format("{0,-15} {1,-22} {2,-25} {3,-25} {4,-15}",
+                flight.FlightNumber, flightAirline.Name, flight.Origin, flight.Destination,
+                flight.ExpectedTime.ToString("d/M/yyyy")));
+
+            Console.WriteLine(string.Format("{0,-15} {1,-12} {2,-15}",
+                flight.ExpectedTime.ToString("h:mm:ss tt"), flight.Status, gate.GateName));
+
             Console.WriteLine($"\nFlight {flight.FlightNumber} has been assigned to Boarding Gate {gate.GateName}!");
         }
+
 
 
 
