@@ -16,10 +16,14 @@ namespace PRG_2_Assignment
     internal class Terminal
     {
         private string terminalName;
-        private Dictionary<string, Airline> airlines;
-        private Dictionary<string, Flight> flights;
-        private Dictionary<string, BoardingGate> boardingGates;
+        private Dictionary<string, Airline> airlines = new Dictionary<string, Airline>();
+        private Dictionary<string, Flight> flights = new Dictionary<string, Flight>();
+        private Dictionary<string, BoardingGate> boardingGates = new Dictionary<string, BoardingGate>();
         private Dictionary<string, double> gateFees;
+
+        public string TerminalName { get { return terminalName; } }
+        public Dictionary<string, Airline> Airlines { get { return airlines; } }
+        public Dictionary<string, BoardingGate> BoardingGates { get { return boardingGates; } }
 
         public Terminal(string terminalName)
         {
