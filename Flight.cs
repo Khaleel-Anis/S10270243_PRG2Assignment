@@ -11,63 +11,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-
 namespace PRG_2_Assignment
 {
     internal abstract class Flight
     {
         public string FlightNumber { get; }
-        public Airline Airline { get; }
         public string Origin { get; }
         public string Destination { get; }
         public DateTime ExpectedTime { get; }
-        public string Status { get; private set; }
-        public BoardingGate AssignedGate { get; private set; }
+        public string Status { get; }
 
-        protected Flight(string flightNumber, Airline airline, string origin, string destination, DateTime expectedTime)
+        protected Flight(string flightNumber, string origin, string destination, DateTime expectedTime, string status)
         {
             FlightNumber = flightNumber;
-            Airline = airline ?? new Airline("N/A", "Unknown Airline");
             Origin = origin;
             Destination = destination;
             ExpectedTime = expectedTime;
-            Status = "Scheduled";
+            Status = status;
         }
 
-        public void AssignGate(BoardingGate gate)
-        {
-            if (AssignedGate == null)
-            {
-                AssignedGate = gate;
-                gate.AssignFlight(this);
-            }
-            else
-            {
-                Console.WriteLine($"Error: Flight {FlightNumber} is already assigned to Gate {AssignedGate.GateName}.");
-            }
-        }
-
-        public void UpdateStatus(string newStatus)
-        {
-            Status = newStatus;
-        }
-
-        public virtual double CalculateFees()
-        {
-            double totalFee = 0;
-            if (Destination == "SIN")
-                totalFee += 500;
-            else if (Origin == "SIN")
-                totalFee += 800;
-            totalFee += 300;
-            return totalFee;
-        }
+        public abstract double CalculateFees();
 
         public override string ToString()
         {
-            return string.Format("{0,-12} {1,-20} {2,-20} {3,-20} {4,-25} {5,-15} {6,-10}",
-                FlightNumber, Airline.Name, Origin, Destination, ExpectedTime.ToString("dd/MM/yyyy hh:mm tt"), Status,
-                AssignedGate != null ? AssignedGate.GateName : "None");
+            return string.Format("{0,-12} {1,-20} {2,-20} {3,-20} {4,-12}",
+                FlightNumber, Origin, Destination,
+                ExpectedTime.ToString("d/M/yyyy"), ExpectedTime.ToString("h:mm tt"));
         }
     }
 }
