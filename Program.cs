@@ -10,7 +10,7 @@ using System.Collections.Generic;
 using System.IO;
 
 
-namespace PRG_2_Assignment
+namespace S10270243_PRG2Assignment
 {
     class Program
     {

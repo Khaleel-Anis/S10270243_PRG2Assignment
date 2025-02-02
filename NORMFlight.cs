@@ -11,11 +11,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
-// NORMFlight.cs
 using System;
 
-namespace PRG_2_Assignment
+namespace S10270243_PRG2Assignment
 {
     internal class NORMFlight : Flight
     {

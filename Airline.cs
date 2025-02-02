@@ -15,7 +15,7 @@ using System.Threading.Tasks;
 
 
 
-namespace PRG_2_Assignment
+namespace S10270243_PRG2Assignment
 {
     internal class Airline
     {
