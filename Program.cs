@@ -119,10 +119,14 @@ namespace S10270243_PRG2Assignment
         }
         static void AssignBoardingGate()
         {
-            Console.Write("\nEnter Flight Number: ");
+            Console.WriteLine("\n=============================================");
+            Console.WriteLine("Assign a Boarding Gate to a Flight");
+            Console.WriteLine("=============================================");
+
+            Console.Write("Enter Flight Number: ");
             string flightNumber = Console.ReadLine()?.Trim().ToUpper();
 
-            // Find the flight by searching all airlines
+            // Find the flight manually from all airlines
             Flight flight = null;
             Airline flightAirline = null;
 
@@ -142,55 +146,49 @@ namespace S10270243_PRG2Assignment
                 return;
             }
 
-            // Display Flight Details
+            Console.Write("Enter Boarding Gate Name: ");
+            string gateName = Console.ReadLine()?.Trim().ToUpper();
+
+            if (!terminal.BoardingGates.ContainsKey(gateName))
+            {
+                Console.WriteLine("Error: Boarding Gate not found.");
+                return;
+            }
+
+            BoardingGate gate = terminal.BoardingGates[gateName];
+
+            // Check if the boarding gate is already assigned
+            if (gate.AssignedFlight != null)
+            {
+                Console.WriteLine($"Error: Boarding Gate {gate.GateName} is already assigned to Flight {gate.AssignedFlight.FlightNumber}. Choose another.");
+                return;
+            }
+
+            // Assign flight to gate
+            gate.AssignFlight(flight);
+
+            // Display assigned details (Matching Sample Output)
             Console.WriteLine("\n=============================================");
-            Console.WriteLine($"Assigning Boarding Gate for Flight {flight.FlightNumber}");
-            Console.WriteLine("=============================================");
-            Console.WriteLine($"Airline: {flightAirline.Name}");
+            Console.WriteLine($"Flight Number: {flight.FlightNumber}");
             Console.WriteLine($"Origin: {flight.Origin}");
             Console.WriteLine($"Destination: {flight.Destination}");
             Console.WriteLine($"Expected Time: {flight.ExpectedTime:dd/M/yyyy h:mm:ss tt}");
-            Console.WriteLine($"Special Request: {(flight is CFFTFlight ? "CFFT" : flight is DDJBFlight ? "DDJB" : flight is LWTTFlight ? "LWTT" : "None")}");
-            Console.WriteLine($"Current Status: {flight.Status}");
-
-            string gateName;
-            while (true)
-            {
-                Console.Write("\nEnter Boarding Gate: ");
-                gateName = Console.ReadLine()?.Trim().ToUpper();
-
-                if (!terminal.BoardingGates.ContainsKey(gateName))
-                {
-                    Console.WriteLine("Error: Boarding Gate not found.");
-                    continue;
-                }
-
-                BoardingGate gate = terminal.BoardingGates[gateName];
-
-                // Check if gate is already assigned
-                if (gate.AssignedFlight != null)
-                {
-                    Console.WriteLine($"Error: Boarding Gate {gate.GateName} is already assigned to Flight {gate.AssignedFlight.FlightNumber}. Choose another.");
-                    continue;
-                }
-
-                // Assign Flight to Gate
-                gate.AssignFlight(flight);
-                Console.WriteLine($"\n✅ Successfully assigned Boarding Gate {gateName} to Flight {flight.FlightNumber}");
-                break;
-            }
+            Console.WriteLine($"Special Request Code: {(flight is CFFTFlight ? "CFFT" : flight is DDJBFlight ? "DDJB" : flight is LWTTFlight ? "LWTT" : "None")}");
+            Console.WriteLine($"Boarding Gate Name: {gate.GateName}");
+            Console.WriteLine($"Supports DDJB: {gate.SupportsDDJB}");
+            Console.WriteLine($"Supports CFFT: {gate.SupportsCFFT}");
+            Console.WriteLine($"Supports LWTT: {gate.SupportsLWTT}");
 
             // Prompt for status update
-            Console.Write("\nWould you like to update the Flight Status? (Y/N): ");
+            Console.Write("\nWould you like to update the status of the flight? (Y/N): ");
             string statusChoice = Console.ReadLine()?.Trim().ToUpper();
 
             if (statusChoice == "Y")
             {
-                Console.WriteLine("\nChoose new status:");
-                Console.WriteLine("1. Delayed");
+                Console.WriteLine("\n1. Delayed");
                 Console.WriteLine("2. Boarding");
                 Console.WriteLine("3. On Time");
-                Console.Write("Select an option: ");
+                Console.Write("Please select the new status of the flight: ");
                 string statusOption = Console.ReadLine();
 
                 if (statusOption == "1") flight.Status = "Delayed";
@@ -203,34 +201,10 @@ namespace S10270243_PRG2Assignment
                 flight.Status = "On Time"; // Default to On Time if not changed
             }
 
-            Console.WriteLine($"\nBoarding Gate Assignment Completed! Flight {flight.FlightNumber} is now '{flight.Status}' at Gate {gateName}.");
+            Console.WriteLine($"\nFlight {flight.FlightNumber} has been assigned to Boarding Gate {gate.GateName}!");
         }
 
 
-
-        static void LoadAirlines()
-        {
-            string filePath = "airlines.csv";
-            if (!File.Exists(filePath))
-            {
-                Console.WriteLine("Error: Airlines data file not found!");
-                return;
-            }
-
-            using (StreamReader reader = new StreamReader(filePath))
-            {
-                string line;
-                while ((line = reader.ReadLine()) != null)
-                {
-                    string[] data = line.Split(',');
-                    if (data.Length == 2)
-                    {
-                        Airline airline = new Airline(data[1], data[0]); // Code, Name
-                        terminal.AddAirline(airline);
-                    }
-                }
-            }
-        }
 
         static void LoadBoardingGates()
         {
