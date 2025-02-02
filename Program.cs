@@ -42,6 +42,7 @@ namespace S10270243_PRG2Assignment
                 Console.WriteLine("=============================================");
                 Console.WriteLine("\n1. List All Flights");
                 Console.WriteLine("2. List Boarding Gates");
+                Console.WriteLine("7. Display Flight Schedule");
                 Console.WriteLine("0. Exit");
                 Console.Write("Please select an option: ");
 
@@ -54,6 +55,9 @@ namespace S10270243_PRG2Assignment
                         break;
                     case "2":
                         ListAllBoardingGates();
+                        break;
+                    case "7":
+                        DisplayFlightSchedule();
                         break;
                     case "0":
                         Console.WriteLine("Exiting program...");
@@ -141,7 +145,7 @@ namespace S10270243_PRG2Assignment
 
             using (StreamReader reader = new StreamReader(filePath))
             {
-                reader.ReadLine(); // ✅ Skip header row
+                reader.ReadLine(); // Skip header row
 
                 string line;
                 while ((line = reader.ReadLine()) != null)
@@ -200,7 +204,7 @@ namespace S10270243_PRG2Assignment
                         else if (specialRequest == "LWTT") flight = new LWTTFlight(flightNumber, origin, destination, expectedTime);
                         else flight = new NORMFlight(flightNumber, origin, destination, expectedTime);
 
-                        // ✅ Assign flight to correct airline
+                        // Assign flight to correct airline
                         string airlineCode = flightNumber.Split(' ')[0]; // Extract "SQ" from "SQ 115"
                         if (terminal.Airlines.ContainsKey(airlineCode))
                         {
@@ -212,6 +216,58 @@ namespace S10270243_PRG2Assignment
                         }
                     }
                 }
+            }
+        }
+
+        static void DisplayFlightSchedule()
+        {
+            Console.WriteLine("\n=============================================");
+            Console.WriteLine("Flight Schedule for Changi Airport Terminal 5");
+            Console.WriteLine("=============================================");
+
+            // First row: Flight details headers
+            Console.WriteLine(string.Format("{0,-12} {1,-20} {2,-20} {3,-20} {4,-12}",
+                "Flight Number", "Airline Name", "Origin", "Destination", "Expected"));
+
+            // Second row: Status, Boarding Gate, Departure/Arrival Time headers
+            Console.WriteLine(string.Format("{0,-12} {1,-20} {2,-20} {3,-20} {4,-12}",
+                "Departure/Arrival Time", "Status", "Boarding Gate", "", ""));
+
+            List<Flight> allFlights = new List<Flight>();
+
+            // Collect all flights
+            foreach (var airline in terminal.Airlines.Values)
+            {
+                allFlights.AddRange(airline.Flights.Values);
+            }
+
+            // Sort flights by ExpectedTime (earliest first)
+            allFlights.Sort((x, y) => x.ExpectedTime.CompareTo(y.ExpectedTime));
+
+            // Print sorted flights
+            foreach (var flight in allFlights)
+            {
+                string airlineName = terminal.Airlines[flight.FlightNumber.Split(' ')[0]].Name; // Get airline name
+
+                // Find assigned boarding gate
+                string boardingGate = "Unassigned";
+                foreach (var gate in terminal.BoardingGates.Values)
+                {
+                    if (gate.AssignedFlight == flight)
+                    {
+                        boardingGate = gate.GateName;
+                        break;
+                    }
+                }
+
+                // Print the first row (Flight details)
+                Console.WriteLine(string.Format("{0,-12} {1,-20} {2,-20} {3,-20} {4,-12}",
+                    flight.FlightNumber, airlineName, flight.Origin, flight.Destination,
+                    flight.ExpectedTime.ToString("d/M/yyyy")));
+
+                // Print the second row (Departure/Arrival Time, Status, Boarding Gate)
+                Console.WriteLine(string.Format("{0,-12} {1,-20} {2,-20} {3,-20} {4,-12}",
+                    flight.ExpectedTime.ToString("h:mm:ss tt"), flight.Status, boardingGate, "", ""));
             }
         }
     }
