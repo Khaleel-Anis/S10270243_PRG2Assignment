@@ -11,6 +11,10 @@
       "RelativeMoniker": "D:0:0:{F4B4AF7E-7058-412F-8774-0043A7CD34C3}|S10270243_PRG2Assignment.csproj|solutionrelative:terminal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{F4B4AF7E-7058-412F-8774-0043A7CD34C3}|S10270243_PRG2Assignment.csproj|c:\\users\\hiawe\\source\\repos\\s10270243_prg2assignment2\\lwttflight.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4B4AF7E-7058-412F-8774-0043A7CD34C3}|S10270243_PRG2Assignment.csproj|solutionrelative:lwttflight.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{F4B4AF7E-7058-412F-8774-0043A7CD34C3}|S10270243_PRG2Assignment.csproj|c:\\users\\hiawe\\source\\repos\\s10270243_prg2assignment2\\flight.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{F4B4AF7E-7058-412F-8774-0043A7CD34C3}|S10270243_PRG2Assignment.csproj|solutionrelative:flight.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -22,7 +26,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -34,20 +38,33 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "LWTTFlight.cs",
+              "DocumentMoniker": "C:\\Users\\hiawe\\source\\repos\\S10270243_PRG2Assignment2\\LWTTFlight.cs",
+              "RelativeDocumentMoniker": "LWTTFlight.cs",
+              "ToolTip": "C:\\Users\\hiawe\\source\\repos\\S10270243_PRG2Assignment2\\LWTTFlight.cs",
+              "RelativeToolTip": "LWTTFlight.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-02T08:51:55.04Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
               "Title": "Terminal.cs",
               "DocumentMoniker": "C:\\Users\\hiawe\\source\\repos\\S10270243_PRG2Assignment2\\Terminal.cs",
               "RelativeDocumentMoniker": "Terminal.cs",
-              "ToolTip": "C:\\Users\\hiawe\\source\\repos\\S10270243_PRG2Assignment2\\Terminal.cs",
-              "RelativeToolTip": "Terminal.cs",
-              "ViewState": "AgIAAGQAAAAAAAAAAAAswKMAAAAAAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\hiawe\\source\\repos\\S10270243_PRG2Assignment2\\Terminal.cs*",
+              "RelativeToolTip": "Terminal.cs*",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAbAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-02T08:11:31.084Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "Flight.cs",
               "DocumentMoniker": "C:\\Users\\hiawe\\source\\repos\\S10270243_PRG2Assignment2\\Flight.cs",
               "RelativeDocumentMoniker": "Flight.cs",
@@ -55,7 +72,8 @@
               "RelativeToolTip": "Flight.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-02T07:55:50.206Z"
+              "WhenOpened": "2025-02-02T07:55:50.206Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -65,7 +83,7 @@
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\Users\\hiawe\\source\\repos\\S10270243_PRG2Assignment2\\Program.cs*",
               "RelativeToolTip": "Program.cs*",
-              "ViewState": "AgIAALcAAAAAAAAAAAAuwNUAAABCAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAPEAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-02T07:21:57.809Z",
               "EditorCaption": ""

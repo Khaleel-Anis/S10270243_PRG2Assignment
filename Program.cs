@@ -226,6 +226,29 @@ namespace S10270243_PRG2Assignment
 
 
 
+        static void LoadAirlines()
+        {
+            string filePath = "airlines.csv";
+            if (!File.Exists(filePath))
+            {
+                Console.WriteLine("Error: Airlines data file not found!");
+                return;
+            }
+
+            using (StreamReader reader = new StreamReader(filePath))
+            {
+                string line;
+                while ((line = reader.ReadLine()) != null)
+                {
+                    string[] data = line.Split(',');
+                    if (data.Length == 2)
+                    {
+                        Airline airline = new Airline(data[1], data[0]); // Code, Name
+                        terminal.AddAirline(airline);
+                    }
+                }
+            }
+        }
 
         static void LoadBoardingGates()
         {
