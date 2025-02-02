@@ -19,7 +19,7 @@ namespace PRG_2_Assignment
         public string Origin { get; }
         public string Destination { get; }
         public DateTime ExpectedTime { get; }
-        public string Status { get; }
+        public string Status { get; set; } // Now mutable as per UML
 
         protected Flight(string flightNumber, string origin, string destination, DateTime expectedTime, string status)
         {
@@ -56,7 +56,6 @@ namespace PRG_2_Assignment
             // Ensure Fee is Non-Negative
             return Math.Max(fee, 0);
         }
-
 
         public override string ToString()
         {
