@@ -211,7 +211,7 @@ namespace S10270243_PRG2Assignment
                 "Flight Number", "Airline Name", "Origin", "Destination", "Expected"));
 
             // Status, Boarding Gate, Departure/Arrival Time headers (Correctly aligned)
-            Console.WriteLine(string.Format("{0,-15} {1,-8} {2,-15}",
+            Console.WriteLine(string.Format("{0,-15} {1,-5} {2,-15}",
                 "Departure/Arrival Time", "Status", "Boarding Gate"));
 
             Console.WriteLine(string.Format("{0,-15} {1,-22} {2,-25} {3,-25} {4,-15}",
