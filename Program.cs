@@ -44,6 +44,7 @@ namespace S10270243_PRG2Assignment
                 Console.WriteLine("\n1. List All Flights");
                 Console.WriteLine("2. List Boarding Gates");
                 Console.WriteLine("3. Assign Boarding Gate");
+                Console.WriteLine("4. Create Flight");
                 Console.WriteLine("6. Modify Flight Details");
                 Console.WriteLine("7. Display Flight Schedule");
                 Console.WriteLine("0. Exit");
@@ -61,6 +62,9 @@ namespace S10270243_PRG2Assignment
                         break;
                     case "3":
                         AssignBoardingGate();
+                        break;
+                    case "4":
+                        CreateFlight();
                         break;
                     case "6":
                         ModifyFlightDetails();
@@ -225,7 +229,7 @@ namespace S10270243_PRG2Assignment
         }
         static void CreateFlight()
         {
-            List<string> newFlights = new List<string>(); // Store new flights before writing to CSV
+            List<string> newFlights = new List<string>();
 
             while (true)
             {
@@ -233,11 +237,10 @@ namespace S10270243_PRG2Assignment
                 Console.WriteLine("Create a New Flight");
                 Console.WriteLine("=============================================");
 
-                // Get Flight Number
                 Console.Write("Enter Flight Number: ");
                 string flightNumber = Console.ReadLine()?.Trim().ToUpper();
 
-                // Ensure flight does not already exist
+                // Search all airlines to ensure the flight doesn't exist
                 foreach (var airline in terminal.Airlines.Values)
                 {
                     if (airline.Flights.ContainsKey(flightNumber))
@@ -247,21 +250,18 @@ namespace S10270243_PRG2Assignment
                     }
                 }
 
-                // Get Origin & Destination
                 Console.Write("Enter Origin: ");
                 string origin = Console.ReadLine()?.Trim();
                 Console.Write("Enter Destination: ");
                 string destination = Console.ReadLine()?.Trim();
 
-                // Get Expected Departure/Arrival Time
                 Console.Write("Enter Expected Departure/Arrival Time (dd/MM/yyyy HH:mm): ");
                 if (!DateTime.TryParseExact(Console.ReadLine(), "dd/MM/yyyy HH:mm", null, System.Globalization.DateTimeStyles.None, out DateTime expectedTime))
                 {
                     Console.WriteLine("Error: Invalid date format. Flight not added.");
-                    return;
+                    continue;
                 }
 
-                // Ask if user wants to add a Special Request Code
                 Console.Write("Would you like to enter a Special Request Code? (Y/N): ");
                 string addSpecialRequest = Console.ReadLine()?.Trim().ToUpper();
                 string specialRequest = "None";
@@ -278,21 +278,31 @@ namespace S10270243_PRG2Assignment
                     }
                 }
 
+                // Determine the flight type
+                Flight flight = specialRequest switch
+                {
+                    "CFFT" => new CFFTFlight(flightNumber, origin, destination, expectedTime),
+                    "DDJB" => new DDJBFlight(flightNumber, origin, destination, expectedTime),
+                    "LWTT" => new LWTTFlight(flightNumber, origin, destination, expectedTime),
+                    _ => new NORMFlight(flightNumber, origin, destination, expectedTime)
+                };
 
+                // Add flight to the correct airline based on Flight Number prefix (e.g., SQ 115 -> Airline "SQ")
+                string airlineCode = flightNumber.Split(' ')[0];
 
-                // Create Flight Object
-                Flight flight;
-                if (specialRequest == "CFFT") flight = new CFFTFlight(flightNumber, origin, destination, expectedTime);
-                else if (specialRequest == "DDJB") flight = new DDJBFlight(flightNumber, origin, destination, expectedTime);
-                else if (specialRequest == "LWTT") flight = new LWTTFlight(flightNumber, origin, destination, expectedTime);
-                else flight = new NORMFlight(flightNumber, origin, destination, expectedTime);
+                if (terminal.Airlines.ContainsKey(airlineCode))
+                {
+                    terminal.Airlines[airlineCode].AddFlight(flight);
+                }
+                else
+                {
+                    Console.WriteLine($"Warning: No airline found for flight {flightNumber}. Flight not added.");
+                    return;
+                }
 
-                // Add Flight to Dictionary
-                airlines.AddFlight(flight);
+                Console.WriteLine($"Flight {flightNumber} successfully added!");
 
-                // Prepare new flight entry for CSV
-                string newFlightEntry = $"{flightNumber},{origin},{destination},{expectedTime:HH:mm},{specialRequest}";
-                newFlights.Add(newFlightEntry);
+                newFlights.Add($"{flightNumber},{origin},{destination},{expectedTime:HH:mm},{specialRequest}");
 
                 Console.Write("Would you like to add another Flight? (Y/N): ");
                 string response = Console.ReadLine()?.Trim().ToUpper();
