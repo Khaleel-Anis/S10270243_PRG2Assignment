@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace PRG_2_Assignment
 {
-    internal class Flight
+    internal abstract class Flight
     {
         public string FlightNumber { get; }
         public string Origin { get; }
@@ -30,7 +30,7 @@ namespace PRG_2_Assignment
             Status = status;
         }
 
-        public double CalculateFees()
+        public virtual double CalculateFees()
         {
             double fee = 300; // Base fee
             if (Destination == "SIN") fee += 500; // Arrival fee
@@ -41,7 +41,8 @@ namespace PRG_2_Assignment
             if (this is DDJBFlight) fee += 300;
             if (this is LWTTFlight) fee += 500;
 
-            // Apply Discounts
+            // Apply Discounts in Correct Order
+            fee *= 0.97; // 3% discount applied to total bill before other discounts
             if (ExpectedTime.Hour < 11 || ExpectedTime.Hour >= 21) fee -= 110; // Early/Late Discount
             if (Origin == "DXB" || Origin == "BKK" || Origin == "NRT") fee -= 25; // Specific Airport Discount
             if (!(this is CFFTFlight || this is DDJBFlight || this is LWTTFlight)) fee -= 50; // No Special Request Discount
