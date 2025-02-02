@@ -34,3 +34,21 @@ C:\Users\hiawe\Source\Repos\S10270243_PRG2Assignment2\obj\Debug\net8.0\refint\S1
 C:\Users\hiawe\Source\Repos\S10270243_PRG2Assignment2\obj\Debug\net8.0\S10270243_PRG2Assignment.pdb
 C:\Users\hiawe\Source\Repos\S10270243_PRG2Assignment2\obj\Debug\net8.0\S10270243_PRG2Assignment.genruntimeconfig.cache
 C:\Users\hiawe\Source\Repos\S10270243_PRG2Assignment2\obj\Debug\net8.0\ref\S10270243_PRG2Assignment.dll
+C:\Users\yowha\Documents\Programming Stuff\S10270243_Prg2Assignment\bin\Debug\net8.0\S10270243_PRG2Assignment.exe
+C:\Users\yowha\Documents\Programming Stuff\S10270243_Prg2Assignment\bin\Debug\net8.0\airlines.csv
+C:\Users\yowha\Documents\Programming Stuff\S10270243_Prg2Assignment\bin\Debug\net8.0\boardinggates.csv
+C:\Users\yowha\Documents\Programming Stuff\S10270243_Prg2Assignment\bin\Debug\net8.0\flights.csv
+C:\Users\yowha\Documents\Programming Stuff\S10270243_Prg2Assignment\bin\Debug\net8.0\S10270243_PRG2Assignment.deps.json
+C:\Users\yowha\Documents\Programming Stuff\S10270243_Prg2Assignment\bin\Debug\net8.0\S10270243_PRG2Assignment.runtimeconfig.json
+C:\Users\yowha\Documents\Programming Stuff\S10270243_Prg2Assignment\bin\Debug\net8.0\S10270243_PRG2Assignment.dll
+C:\Users\yowha\Documents\Programming Stuff\S10270243_Prg2Assignment\bin\Debug\net8.0\S10270243_PRG2Assignment.pdb
+C:\Users\yowha\Documents\Programming Stuff\S10270243_Prg2Assignment\obj\Debug\net8.0\S10270243_PRG2Assignment.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\yowha\Documents\Programming Stuff\S10270243_Prg2Assignment\obj\Debug\net8.0\S10270243_PRG2Assignment.AssemblyInfoInputs.cache
+C:\Users\yowha\Documents\Programming Stuff\S10270243_Prg2Assignment\obj\Debug\net8.0\S10270243_PRG2Assignment.AssemblyInfo.cs
+C:\Users\yowha\Documents\Programming Stuff\S10270243_Prg2Assignment\obj\Debug\net8.0\S10270243_PRG2Assignment.csproj.CoreCompileInputs.cache
+C:\Users\yowha\Documents\Programming Stuff\S10270243_Prg2Assignment\obj\Debug\net8.0\S10270243_PRG2Assignment.sourcelink.json
+C:\Users\yowha\Documents\Programming Stuff\S10270243_Prg2Assignment\obj\Debug\net8.0\S10270243_PRG2Assignment.dll
+C:\Users\yowha\Documents\Programming Stuff\S10270243_Prg2Assignment\obj\Debug\net8.0\refint\S10270243_PRG2Assignment.dll
+C:\Users\yowha\Documents\Programming Stuff\S10270243_Prg2Assignment\obj\Debug\net8.0\S10270243_PRG2Assignment.pdb
+C:\Users\yowha\Documents\Programming Stuff\S10270243_Prg2Assignment\obj\Debug\net8.0\S10270243_PRG2Assignment.genruntimeconfig.cache
+C:\Users\yowha\Documents\Programming Stuff\S10270243_Prg2Assignment\obj\Debug\net8.0\ref\S10270243_PRG2Assignment.dll

@@ -45,6 +45,7 @@ namespace S10270243_PRG2Assignment
                 Console.WriteLine("2. List Boarding Gates");
                 Console.WriteLine("3. Assign Boarding Gate");
                 Console.WriteLine("4. Create Flight");
+                Console.WriteLine("5. Display Airline Flights");
                 Console.WriteLine("6. Modify Flight Details");
                 Console.WriteLine("7. Display Flight Schedule");
                 Console.WriteLine("0. Exit");
@@ -65,6 +66,9 @@ namespace S10270243_PRG2Assignment
                         break;
                     case "4":
                         CreateFlight();
+                        break;
+                    case "5":
+                        DisplayAirlineFlights();
                         break;
                     case "6":
                         ModifyFlightDetails();
@@ -406,6 +410,86 @@ namespace S10270243_PRG2Assignment
                 }
             }
         }
+
+        static void DisplayAirlineFlights()
+        {
+            Console.WriteLine("\n=============================================");
+            Console.WriteLine("List of Airlines for Changi Airport Terminal 5");
+            Console.WriteLine("=============================================");
+            Console.WriteLine(string.Format("{0,-12} {1,-20}", "Airline Code", "Airline Name"));
+
+            // Display all airlines
+            foreach (var airline in terminal.Airlines.Values)
+            {
+                Console.WriteLine(string.Format("{0,-12} {1,-20}", airline.Code, airline.Name));
+            }
+
+            Console.Write("\nEnter Airline Code: ");
+            string airlineCode = Console.ReadLine().ToUpper();
+
+            // Validate airline code
+            if (!terminal.Airlines.ContainsKey(airlineCode))
+            {
+                Console.WriteLine("Error: Invalid Airline Code.");
+                return;
+            }
+
+            Airline selectedAirline = terminal.Airlines[airlineCode];
+
+            Console.WriteLine("\n=============================================");
+            Console.WriteLine($"List of Flights for {selectedAirline.Name}");
+            Console.WriteLine("=============================================");
+            Console.WriteLine(string.Format("{0,-12} {1,-20} {2,-20}", "Flight Number", "Origin", "Destination"));
+
+            // Display all flights for selected airline
+            foreach (var flight in selectedAirline.Flights.Values)
+            {
+                Console.WriteLine(string.Format("{0,-12} {1,-20} {2,-20}",
+                    flight.FlightNumber, flight.Origin, flight.Destination));
+            }
+
+            Console.Write("\nChoose a Flight Number: ");
+            string flightNumber = Console.ReadLine().ToUpper();
+
+            // Validate flight selection
+            if (!selectedAirline.Flights.ContainsKey(flightNumber))
+            {
+                Console.WriteLine("Error: Flight not found.");
+                return;
+            }
+
+            Flight selectedFlight = selectedAirline.Flights[flightNumber];
+
+            // Find assigned boarding gate (if any)
+            string boardingGate = "Unassigned";
+            foreach (var gate in terminal.BoardingGates.Values)
+            {
+                if (gate.AssignedFlight == selectedFlight)
+                {
+                    boardingGate = gate.GateName;
+                    break;
+                }
+            }
+
+            // Determine Special Request Code (CFFT, DDJB, LWTT, None)
+            string specialRequest = selectedFlight is CFFTFlight ? "CFFT"
+                                : selectedFlight is DDJBFlight ? "DDJB"
+                                : selectedFlight is LWTTFlight ? "LWTT"
+                                : "None";
+
+            // Display full flight details
+            Console.WriteLine("\n=============================================");
+            Console.WriteLine("Flight Details");
+            Console.WriteLine("=============================================");
+            Console.WriteLine($"Flight Number: {selectedFlight.FlightNumber}");
+            Console.WriteLine($"Airline Name: {selectedAirline.Name}");
+            Console.WriteLine($"Origin: {selectedFlight.Origin}");
+            Console.WriteLine($"Destination: {selectedFlight.Destination}");
+            Console.WriteLine($"Expected Departure/Arrival Time: {selectedFlight.ExpectedTime.ToString("d/M/yyyy h:mm:ss tt")}");
+            Console.WriteLine($"Special Request Code: {specialRequest}");
+            Console.WriteLine($"Boarding Gate: {boardingGate}");
+        }
+
 
         static void ModifyFlightDetails()
         {
