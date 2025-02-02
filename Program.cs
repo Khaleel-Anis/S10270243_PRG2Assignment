@@ -151,6 +151,7 @@ namespace S10270243_PRG2Assignment
             Console.WriteLine($"Destination: {flight.Destination}");
             Console.WriteLine($"Expected Time: {flight.ExpectedTime:dd/M/yyyy h:mm:ss tt}");
             Console.WriteLine($"Special Request: {(flight is CFFTFlight ? "CFFT" : flight is DDJBFlight ? "DDJB" : flight is LWTTFlight ? "LWTT" : "None")}");
+            Console.WriteLine($"Current Status: {flight.Status}");
 
             string gateName;
             while (true)
@@ -192,17 +193,17 @@ namespace S10270243_PRG2Assignment
                 Console.Write("Select an option: ");
                 string statusOption = Console.ReadLine();
 
-                if (statusOption == "1") flight.SetStatus("Delayed");
-                else if (statusOption == "2") flight.SetStatus("Boarding");
-                else if (statusOption == "3") flight.SetStatus("On Time");
+                if (statusOption == "1") flight.Status = "Delayed";
+                else if (statusOption == "2") flight.Status = "Boarding";
+                else if (statusOption == "3") flight.Status = "On Time";
                 else Console.WriteLine("Invalid option. Status unchanged.");
             }
             else
             {
-                flight.SetStatus("On Time"); // Default to On Time if not changed
+                flight.Status = "On Time"; // Default to On Time if not changed
             }
 
-            Console.WriteLine("\nBoarding Gate Assignment Completed!");
+            Console.WriteLine($"\nBoarding Gate Assignment Completed! Flight {flight.FlightNumber} is now '{flight.Status}' at Gate {gateName}.");
         }
 
 
