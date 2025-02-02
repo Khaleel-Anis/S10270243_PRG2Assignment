@@ -1,19 +1,9 @@
-﻿//==========================================================
-// Student Number : S10270243
-// Student Number : S10269256
-// Student Name : Khaleel Anis
-// Partner Name : Hia Wei Dai
-//==========================================================
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace S10270243_PRG2Assignment
 {
-    public abstract class Flight
+    // ✅ Implement IComparable<Flight>
+    public abstract class Flight : IComparable<Flight>
     {
         public string FlightNumber { get; }
         public string Origin { get; }
@@ -55,6 +45,13 @@ namespace S10270243_PRG2Assignment
 
             // Ensure Fee is Non-Negative
             return Math.Max(fee, 0);
+        }
+
+        // ✅ Implement CompareTo() for sorting
+        public int CompareTo(Flight other)
+        {
+            if (other == null) return 1;
+            return this.ExpectedTime.CompareTo(other.ExpectedTime);
         }
 
         public override string ToString()

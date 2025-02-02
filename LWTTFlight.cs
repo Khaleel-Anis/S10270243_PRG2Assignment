@@ -20,7 +20,7 @@ namespace S10270243_PRG2Assignment
         private const double RequestFee = 500;
 
         public LWTTFlight(string flightNumber, string origin, string destination, DateTime expectedTime)
-            : base(flightNumber, origin, destination, expectedTime, "Scheduled") { }
+            : base(flightNumber, origin, destination, expectedTime, "On Time") { }
 
         public override double CalculateFees()
         {
