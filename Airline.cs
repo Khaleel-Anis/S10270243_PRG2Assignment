@@ -14,26 +14,31 @@ using System.Text;
 using System.Threading.Tasks;
 
 
+
 namespace PRG_2_Assignment
 {
     internal class Airline
     {
-        public string Name { get; }
-        public string Code { get; }
-        public Dictionary<string, Flight> Flights { get; private set; }
+        private string name;
+        private string code;
+        private Dictionary<string, Flight> flights;
+
+        public string Name { get { return name; } }
+        public string Code { get { return code; } }
+        public Dictionary<string, Flight> Flights { get { return flights; } }
 
         public Airline(string code, string name)
         {
-            Code = code;
-            Name = name;
-            Flights = new Dictionary<string, Flight>();
+            this.code = code;
+            this.name = name;
+            flights = new Dictionary<string, Flight>();
         }
 
         public bool AddFlight(Flight flight)
         {
-            if (!Flights.ContainsKey(flight.FlightNumber))
+            if (!flights.ContainsKey(flight.FlightNumber))
             {
-                Flights.Add(flight.FlightNumber, flight);
+                flights.Add(flight.FlightNumber, flight);
                 return true;
             }
             return false;
@@ -41,27 +46,36 @@ namespace PRG_2_Assignment
 
         public bool RemoveFlight(Flight flight)
         {
-            return Flights.Remove(flight.FlightNumber);
+            return flights.Remove(flight.FlightNumber);
         }
 
         public double CalculateFees()
         {
-            double total = 0;
-            foreach (var flight in Flights.Values)
+            double totalFees = 0;
+            int flightCount = flights.Count;
+            foreach (var flight in flights.Values)
             {
-                total += flight.CalculateFees();
+                totalFees += flight.CalculateFees();
             }
-            return total;
+
+            // Apply promotions and discounts
+            if (flightCount >= 3)
+            {
+                totalFees -= 700; // Discount per new assignment writeup
+            }
+            totalFees *= 0.97; // 3% off the total bill as per assignment v3
+
+            return totalFees;
         }
 
         public override string ToString()
         {
             string flightDetails = "\n=============================================";
-            flightDetails += "\nList of Flights for " + Name;
+            flightDetails += "\nList of Flights for " + name;
             flightDetails += "\n=============================================";
             flightDetails += string.Format("\n{0,-12} {1,-20} {2,-20} {3,-20} {4,-25} {5,-15}", "Flight No.", "Origin", "Destination", "Expected Time", "Status", "Gate");
 
-            foreach (var flight in Flights.Values)
+            foreach (var flight in flights.Values)
             {
                 flightDetails += "\n" + flight.ToString();
             }
