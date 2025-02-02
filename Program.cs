@@ -122,8 +122,20 @@ namespace S10270243_PRG2Assignment
             Console.Write("\nEnter Flight Number: ");
             string flightNumber = Console.ReadLine()?.Trim().ToUpper();
 
-            // Retrieve the flight
-            Flight flight = terminal.GetFlight(flightNumber);
+            // Find the flight by searching all airlines
+            Flight flight = null;
+            Airline flightAirline = null;
+
+            foreach (var airline in terminal.Airlines.Values)
+            {
+                if (airline.Flights.ContainsKey(flightNumber))
+                {
+                    flight = airline.Flights[flightNumber];
+                    flightAirline = airline;
+                    break;
+                }
+            }
+
             if (flight == null)
             {
                 Console.WriteLine("Error: Flight not found.");
@@ -134,6 +146,7 @@ namespace S10270243_PRG2Assignment
             Console.WriteLine("\n=============================================");
             Console.WriteLine($"Assigning Boarding Gate for Flight {flight.FlightNumber}");
             Console.WriteLine("=============================================");
+            Console.WriteLine($"Airline: {flightAirline.Name}");
             Console.WriteLine($"Origin: {flight.Origin}");
             Console.WriteLine($"Destination: {flight.Destination}");
             Console.WriteLine($"Expected Time: {flight.ExpectedTime:dd/M/yyyy h:mm:ss tt}");
@@ -191,6 +204,7 @@ namespace S10270243_PRG2Assignment
 
             Console.WriteLine("\nBoarding Gate Assignment Completed!");
         }
+
 
 
         static void LoadAirlines()
