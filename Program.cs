@@ -43,6 +43,7 @@ namespace S10270243_PRG2Assignment
                 Console.WriteLine("=============================================");
                 Console.WriteLine("\n1. List All Flights");
                 Console.WriteLine("2. List Boarding Gates");
+                Console.WriteLine("3. Assign Boarding Gate");
                 Console.WriteLine("6. Modify Flight Details");
                 Console.WriteLine("7. Display Flight Schedule");
                 Console.WriteLine("0. Exit");
