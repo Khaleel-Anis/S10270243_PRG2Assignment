@@ -58,6 +58,9 @@ namespace S10270243_PRG2Assignment
                     case "2":
                         ListAllBoardingGates();
                         break;
+                    case "3":
+                        AssignBoardingGate();
+                        break;
                     case "6":
                         ModifyFlightDetails();
                         break;
@@ -112,6 +115,80 @@ namespace S10270243_PRG2Assignment
                     gate.SupportsCFFT ? "True" : "False",
                     gate.SupportsLWTT ? "True" : "False"));
             }
+        }
+        static void AssignBoardingGate()
+        {
+            Console.Write("\nEnter Flight Number: ");
+            string flightNumber = Console.ReadLine()?.Trim().ToUpper();
+
+            // Retrieve the flight
+            Flight flight = terminal.GetFlight(flightNumber);
+            if (flight == null)
+            {
+                Console.WriteLine("Error: Flight not found.");
+                return;
+            }
+
+            // Display Flight Details
+            Console.WriteLine("\n=============================================");
+            Console.WriteLine($"Assigning Boarding Gate for Flight {flight.FlightNumber}");
+            Console.WriteLine("=============================================");
+            Console.WriteLine($"Origin: {flight.Origin}");
+            Console.WriteLine($"Destination: {flight.Destination}");
+            Console.WriteLine($"Expected Time: {flight.ExpectedTime:dd/M/yyyy h:mm:ss tt}");
+            Console.WriteLine($"Special Request: {(flight is CFFTFlight ? "CFFT" : flight is DDJBFlight ? "DDJB" : flight is LWTTFlight ? "LWTT" : "None")}");
+
+            string gateName;
+            while (true)
+            {
+                Console.Write("\nEnter Boarding Gate: ");
+                gateName = Console.ReadLine()?.Trim().ToUpper();
+
+                if (!terminal.BoardingGates.ContainsKey(gateName))
+                {
+                    Console.WriteLine("Error: Boarding Gate not found.");
+                    continue;
+                }
+
+                BoardingGate gate = terminal.BoardingGates[gateName];
+
+                // Check if gate is already assigned
+                if (gate.AssignedFlight != null)
+                {
+                    Console.WriteLine($"Error: Boarding Gate {gate.GateName} is already assigned to Flight {gate.AssignedFlight.FlightNumber}. Choose another.");
+                    continue;
+                }
+
+                // Assign Flight to Gate
+                gate.AssignFlight(flight);
+                Console.WriteLine($"\n✅ Successfully assigned Boarding Gate {gateName} to Flight {flight.FlightNumber}");
+                break;
+            }
+
+            // Prompt for status update
+            Console.Write("\nWould you like to update the Flight Status? (Y/N): ");
+            string statusChoice = Console.ReadLine()?.Trim().ToUpper();
+
+            if (statusChoice == "Y")
+            {
+                Console.WriteLine("\nChoose new status:");
+                Console.WriteLine("1. Delayed");
+                Console.WriteLine("2. Boarding");
+                Console.WriteLine("3. On Time");
+                Console.Write("Select an option: ");
+                string statusOption = Console.ReadLine();
+
+                if (statusOption == "1") flight.SetStatus("Delayed");
+                else if (statusOption == "2") flight.SetStatus("Boarding");
+                else if (statusOption == "3") flight.SetStatus("On Time");
+                else Console.WriteLine("Invalid option. Status unchanged.");
+            }
+            else
+            {
+                flight.SetStatus("On Time"); // Default to On Time if not changed
+            }
+
+            Console.WriteLine("\nBoarding Gate Assignment Completed!");
         }
 
 
