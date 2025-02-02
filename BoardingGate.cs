@@ -16,41 +16,47 @@ namespace PRG_2_Assignment
 {
     internal class BoardingGate
     {
-        public string GateName { get; }
-        public bool SupportsCFFT { get; }
-        public bool SupportsDDJB { get; }
-        public bool SupportsLWTT { get; }
-        public Flight AssignedFlight { get; private set; }
+        private string gateName;
+        private bool supportsCFFT;
+        private bool supportsDDJB;
+        private bool supportsLWTT;
+        private Flight assignedFlight;
 
         public BoardingGate(string gateName, bool supportsCFFT, bool supportsDDJB, bool supportsLWTT)
         {
-            GateName = gateName;
-            SupportsCFFT = supportsCFFT;
-            SupportsDDJB = supportsDDJB;
-            SupportsLWTT = supportsLWTT;
+            this.gateName = gateName;
+            this.supportsCFFT = supportsCFFT;
+            this.supportsDDJB = supportsDDJB;
+            this.supportsLWTT = supportsLWTT;
+            this.assignedFlight = null;
         }
 
-        public void AssignFlight(Flight flight)
+        public bool AssignFlight(Flight flight)
         {
-            if (AssignedFlight == null)
+            if (assignedFlight != null)
             {
-                AssignedFlight = flight;
+                Console.WriteLine($"Error: Boarding Gate {gateName} is already assigned to Flight {assignedFlight.FlightNumber}.");
+                return false;
             }
-            else
-            {
-                Console.WriteLine($"Error: Boarding Gate {GateName} is already assigned to Flight {AssignedFlight.FlightNumber}.");
-            }
-        }
 
-        public void RemoveAssignedFlight()
-        {
-            AssignedFlight = null;
+            // Ensure gate supports flight type
+            if ((flight is CFFTFlight && !supportsCFFT) ||
+                (flight is DDJBFlight && !supportsDDJB) ||
+                (flight is LWTTFlight && !supportsLWTT))
+            {
+                Console.WriteLine($"Error: Boarding Gate {gateName} does not support this flight type.");
+                return false;
+            }
+
+            assignedFlight = flight;
+            return true;
         }
 
         public override string ToString()
         {
-            string assignedFlight = AssignedFlight != null ? AssignedFlight.FlightNumber : "None";
-            return string.Format("{0,-10} {1,-10} {2,-10} {3,-10} {4,-15}", GateName, SupportsDDJB, SupportsCFFT, SupportsLWTT, assignedFlight);
+            string assigned = assignedFlight != null ? assignedFlight.FlightNumber : "Unassigned";
+            return string.Format("{0,-10} {1,-10} {2,-10} {3,-10} {4,-15}",
+                gateName, supportsDDJB ? "Yes" : "No", supportsCFFT ? "Yes" : "No", supportsLWTT ? "Yes" : "No", assigned);
         }
     }
 }
