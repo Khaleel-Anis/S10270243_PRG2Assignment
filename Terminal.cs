@@ -15,24 +15,26 @@ namespace PRG_2_Assignment
 {
     internal class Terminal
     {
-        public string TerminalName { get; }
-        public Dictionary<string, Airline> Airlines { get; private set; }
-        public Dictionary<string, Flight> Flights { get; private set; }
-        public Dictionary<string, BoardingGate> BoardingGates { get; private set; }
+        private string terminalName;
+        private Dictionary<string, Airline> airlines;
+        private Dictionary<string, Flight> flights;
+        private Dictionary<string, BoardingGate> boardingGates;
+        private Dictionary<string, double> gateFees;
 
         public Terminal(string terminalName)
         {
-            TerminalName = terminalName;
-            Airlines = new Dictionary<string, Airline>();
-            Flights = new Dictionary<string, Flight>();
-            BoardingGates = new Dictionary<string, BoardingGate>();
+            this.terminalName = terminalName;
+            airlines = new Dictionary<string, Airline>();
+            flights = new Dictionary<string, Flight>();
+            boardingGates = new Dictionary<string, BoardingGate>();
+            gateFees = new Dictionary<string, double>();
         }
 
         public bool AddAirline(Airline airline)
         {
-            if (!Airlines.ContainsKey(airline.Code))
+            if (!airlines.ContainsKey(airline.Code))
             {
-                Airlines.Add(airline.Code, airline);
+                airlines.Add(airline.Code, airline);
                 return true;
             }
             return false;
@@ -40,9 +42,9 @@ namespace PRG_2_Assignment
 
         public bool AddBoardingGate(BoardingGate gate)
         {
-            if (!BoardingGates.ContainsKey(gate.GateName))
+            if (!boardingGates.ContainsKey(gate.GateName))
             {
-                BoardingGates.Add(gate.GateName, gate);
+                boardingGates.Add(gate.GateName, gate);
                 return true;
             }
             return false;
@@ -50,66 +52,48 @@ namespace PRG_2_Assignment
 
         public bool AddFlight(Flight flight)
         {
-            if (!Flights.ContainsKey(flight.FlightNumber))
+            if (!flights.ContainsKey(flight.FlightNumber))
             {
-                Flights.Add(flight.FlightNumber, flight);
+                flights.Add(flight.FlightNumber, flight);
                 return true;
             }
             return false;
         }
 
-        public void PrintBoardingGates()
+        public Airline GetAirlineFromFlight(Flight flight)
         {
-            Console.WriteLine("=============================================");
-            Console.WriteLine("List of Boarding Gates for Changi Airport Terminal 5");
-            Console.WriteLine("=============================================");
-            Console.WriteLine(string.Format("{0,-10} {1,-10} {2,-10} {3,-10}", "Gate Name", "DDJB", "CFFT", "LWTT"));
-
-            foreach (var gate in BoardingGates.Values)
+            foreach (var airline in airlines.Values)
             {
-                Console.WriteLine(gate.ToString());
+                if (airline.Flights.ContainsKey(flight.FlightNumber))
+                {
+                    return airline;
+                }
             }
+            return null;
         }
 
-        public bool AssignBoardingGate(string flightNumber, string gateName)
+        public void PrintAirlineFees()
         {
-            if (Flights.ContainsKey(flightNumber) && BoardingGates.ContainsKey(gateName))
+            Console.WriteLine("=============================================");
+            Console.WriteLine("Airline Fees for " + terminalName);
+            Console.WriteLine("=============================================");
+            Console.WriteLine(string.Format("{0,-20} {1,10}", "Airline", "Total Fees ($)"));
+            Console.WriteLine("---------------------------------------------");
+            foreach (var airline in airlines.Values)
             {
-                Flight flight = Flights[flightNumber];
-                BoardingGate gate = BoardingGates[gateName];
-
-                if (gate.AssignedFlight == null)
+                double totalFee = 0;
+                foreach (var flight in airline.Flights.Values)
                 {
-                    flight.AssignGate(gate);
-                    return true;
+                    totalFee += flight.CalculateFees();
                 }
-                else
-                {
-                    Console.WriteLine("Error: Gate already occupied.");
-                }
+                Console.WriteLine(string.Format("{0,-20} {1,10:F2}", airline.Name, totalFee));
             }
-            else
-            {
-                Console.WriteLine("Error: Flight or gate not found.");
-            }
-            return false;
+            Console.WriteLine("=============================================");
         }
 
         public override string ToString()
         {
-            string gateDetails = "\n=============================================";
-            gateDetails += "\nList of Boarding Gates for Changi Airport Terminal 5";
-            gateDetails += "\n=============================================";
-            gateDetails += string.Format("\n{0,-10} {1,-10} {2,-10} {3,-10} {4,-15}", "Gate Name", "DDJB", "CFFT", "LWTT", "Assigned Flight");
-
-            foreach (var gate in BoardingGates.Values)
-            {
-                string assignedFlight = gate.AssignedFlight != null ? gate.AssignedFlight.FlightNumber : "None";
-                gateDetails += string.Format("\n{0,-10} {1,-10} {2,-10} {3,-10} {4,-15}",
-                                             gate.GateName, gate.SupportsDDJB, gate.SupportsCFFT, gate.SupportsLWTT, assignedFlight);
-            }
-
-            return gateDetails;
+            return $"Terminal: {terminalName}\nTotal Airlines: {airlines.Count}\nTotal Flights: {flights.Count}\nTotal Boarding Gates: {boardingGates.Count}";
         }
     }
 }
