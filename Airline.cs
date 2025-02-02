@@ -52,21 +52,29 @@ namespace PRG_2_Assignment
         public double CalculateFees()
         {
             double totalFees = 0;
-            int flightCount = flights.Count;
+            int arrivingFlights = 0;
+            int departingFlights = 0;
+
             foreach (var flight in flights.Values)
             {
                 totalFees += flight.CalculateFees();
+
+                if (flight.Destination == "SIN") arrivingFlights++;
+                if (flight.Origin == "SIN") departingFlights++;
             }
 
-            // Apply promotions and discounts
-            if (flightCount >= 3)
-            {
-                totalFees -= 700; // Discount per new assignment writeup
-            }
-            totalFees *= 0.97; // 3% off the total bill as per assignment v3
+            // Apply Bulk Discount ($350 per 3 flights)
+            int totalFlights = arrivingFlights + departingFlights;
+            totalFees -= (totalFlights / 3) * 350;
 
-            return totalFees;
+            // Apply 3% Discount if Airline has 5+ Flights
+            if (totalFlights >= 5)
+                totalFees *= 0.97;
+
+            // Ensure Total Fee is Non-Negative
+            return Math.Max(totalFees, 0);
         }
+
 
         public override string ToString()
         {

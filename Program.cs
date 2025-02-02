@@ -192,10 +192,8 @@ namespace PRG_2_Assignment
             Console.WriteLine("\n=============================================");
             Console.WriteLine("List of Flights for Changi Airport Terminal 5");
             Console.WriteLine("=============================================");
-            Console.WriteLine(string.Format("{0,-15} {1,-22} {2,-25} {3,-25} {4,-15}",
-                "Flight Number", "Airline Name", "Origin", "Destination", "Expected"));
-            Console.WriteLine(string.Format("{0,-15} {1,-22} {2,-25} {3,-25} {4,-15}",
-                "Departure/Arrival Time", "", "", "", ""));
+            Console.WriteLine(string.Format("{0,-12} {1,-20} {2,-20} {3,-20} {4,-12} {5,-12}",
+                "Flight No.", "Airline", "Origin", "Destination", "Expected Time", "Status"));
 
             if (terminal.Flights.Count == 0)
             {
@@ -205,13 +203,15 @@ namespace PRG_2_Assignment
 
             foreach (var flight in terminal.Flights.Values)
             {
-                Console.WriteLine(string.Format("{0,-15} {1,-22} {2,-25} {3,-25} {4,-15}",
-                    flight.FlightNumber, flight.Airline.Name, flight.Origin, flight.Destination,
-                    flight.ExpectedTime.ToString("d/M/yyyy")));
-                Console.WriteLine(string.Format("{0,-15} {1,-22} {2,-25} {3,-25} {4,-15}",
-                    flight.ExpectedTime.ToString("h:mm:00 tt"), "", "", "", ""));
+                Airline airline = terminal.GetAirlineFromFlight(flight);
+                string airlineName = airline != null ? airline.Name : "Unknown Airline";
+
+                Console.WriteLine(string.Format("{0,-12} {1,-20} {2,-20} {3,-20} {4,-12} {5,-12}",
+                    flight.FlightNumber, airlineName, flight.Origin, flight.Destination,
+                    flight.ExpectedTime.ToString("d/M/yyyy h:mm tt"), flight.Status));
             }
         }
+
 
         static void LoadFlights(Terminal terminal)
         {

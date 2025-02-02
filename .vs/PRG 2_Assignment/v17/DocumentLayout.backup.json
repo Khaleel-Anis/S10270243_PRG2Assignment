@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\yowha\\Documents\\Programming Stuff\\Prg2\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{F4B4AF7E-7058-412F-8774-0043A7CD34C3}|PRG 2_Assignment.csproj|c:\\users\\yowha\\documents\\programming stuff\\prg2\\terminal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{F4B4AF7E-7058-412F-8774-0043A7CD34C3}|PRG 2_Assignment.csproj|solutionrelative:terminal.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{F4B4AF7E-7058-412F-8774-0043A7CD34C3}|PRG 2_Assignment.csproj|c:\\users\\yowha\\documents\\programming stuff\\prg2\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4B4AF7E-7058-412F-8774-0043A7CD34C3}|PRG 2_Assignment.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{F4B4AF7E-7058-412F-8774-0043A7CD34C3}|PRG 2_Assignment.csproj|c:\\users\\yowha\\documents\\programming stuff\\prg2\\boardinggate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{F4B4AF7E-7058-412F-8774-0043A7CD34C3}|PRG 2_Assignment.csproj|solutionrelative:boardinggate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -14,7 +18,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -26,15 +30,28 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Terminal.cs",
-              "DocumentMoniker": "C:\\Users\\yowha\\Documents\\Programming Stuff\\Prg2\\Terminal.cs",
-              "RelativeDocumentMoniker": "Terminal.cs",
-              "ToolTip": "C:\\Users\\yowha\\Documents\\Programming Stuff\\Prg2\\Terminal.cs*",
-              "RelativeToolTip": "Terminal.cs*",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFgAAAABAAAAAAAAAA==",
+              "DocumentIndex": 1,
+              "Title": "BoardingGate.cs",
+              "DocumentMoniker": "C:\\Users\\yowha\\Documents\\Programming Stuff\\Prg2\\BoardingGate.cs",
+              "RelativeDocumentMoniker": "BoardingGate.cs",
+              "ToolTip": "C:\\Users\\yowha\\Documents\\Programming Stuff\\Prg2\\BoardingGate.cs",
+              "RelativeToolTip": "BoardingGate.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAABwAAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-02T05:04:15.649Z",
+              "WhenOpened": "2025-02-02T06:17:10.503Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\yowha\\Documents\\Programming Stuff\\Prg2\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\yowha\\Documents\\Programming Stuff\\Prg2\\Program.cs*",
+              "RelativeToolTip": "Program.cs*",
+              "ViewState": "AgIAALYAAAAAAAAAAAAIwNQAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-02T06:08:17.666Z",
               "EditorCaption": ""
             }
           ]

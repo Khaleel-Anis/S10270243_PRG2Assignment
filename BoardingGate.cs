@@ -23,6 +23,10 @@ namespace PRG_2_Assignment
         private Flight assignedFlight;
 
         public string GateName { get { return gateName; } }
+        public bool SupportsCFFT { get { return supportsCFFT; } }
+        public bool SupportsDDJB { get { return supportsDDJB; } }
+        public bool SupportsLWTT { get { return supportsLWTT; } }
+        public Flight? AssignedFlight { get { return assignedFlight; } }
 
         public BoardingGate(string gateName, bool supportsCFFT, bool supportsDDJB, bool supportsLWTT)
         {

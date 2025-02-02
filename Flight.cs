@@ -32,23 +32,31 @@ namespace PRG_2_Assignment
 
         public virtual double CalculateFees()
         {
-            double fee = 300; // Base fee
-            if (Destination == "SIN") fee += 500; // Arrival fee
-            if (Origin == "SIN") fee += 800; // Departure fee
+            double fee = 300; // Base boarding gate fee
 
-            // Apply Special Request Fees
+            // Arrival / Departure Fees
+            if (Destination == "SIN") fee += 500; // Arriving flight fee
+            if (Origin == "SIN") fee += 800; // Departing flight fee
+
+            // Special Request Fees
             if (this is CFFTFlight) fee += 150;
             if (this is DDJBFlight) fee += 300;
             if (this is LWTTFlight) fee += 500;
 
-            // Apply Discounts in Correct Order
-            fee *= 0.97; // 3% discount applied to total bill before other discounts
-            if (ExpectedTime.Hour < 11 || ExpectedTime.Hour >= 21) fee -= 110; // Early/Late Discount
-            if (Origin == "DXB" || Origin == "BKK" || Origin == "NRT") fee -= 25; // Specific Airport Discount
-            if (!(this is CFFTFlight || this is DDJBFlight || this is LWTTFlight)) fee -= 50; // No Special Request Discount
+            // Apply Flight-Based Discounts
+            if (ExpectedTime.Hour < 11 || ExpectedTime.Hour >= 21)
+                fee -= 110; // Early/Late Discount
 
-            return fee > 0 ? fee : 0; // Ensure fee is not negative
+            if (Origin == "DXB" || Origin == "BKK" || Origin == "NRT")
+                fee -= 25; // Specific Origin Discount
+
+            if (!(this is CFFTFlight || this is DDJBFlight || this is LWTTFlight))
+                fee -= 50; // No Special Request Discount
+
+            // Ensure Fee is Non-Negative
+            return Math.Max(fee, 0);
         }
+
 
         public override string ToString()
         {
