@@ -13,7 +13,7 @@ using System.Threading.Tasks;
 
 namespace S10270243_PRG2Assignment
 {
-    internal abstract class Flight
+    public abstract class Flight
     {
         public string FlightNumber { get; }
         public string Origin { get; }
