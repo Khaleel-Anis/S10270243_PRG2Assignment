@@ -22,6 +22,8 @@ namespace PRG_2_Assignment
         private bool supportsLWTT;
         private Flight assignedFlight;
 
+        public string GateName { get { return gateName; } }
+
         public BoardingGate(string gateName, bool supportsCFFT, bool supportsDDJB, bool supportsLWTT)
         {
             this.gateName = gateName;

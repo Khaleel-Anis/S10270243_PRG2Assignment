@@ -50,16 +50,6 @@ namespace PRG_2_Assignment
             return false;
         }
 
-        public bool AddFlight(Flight flight)
-        {
-            if (!flights.ContainsKey(flight.FlightNumber))
-            {
-                flights.Add(flight.FlightNumber, flight);
-                return true;
-            }
-            return false;
-        }
-
         public Airline GetAirlineFromFlight(Flight flight)
         {
             foreach (var airline in airlines.Values)
@@ -93,7 +83,7 @@ namespace PRG_2_Assignment
 
         public override string ToString()
         {
-            return $"Terminal: {terminalName}\nTotal Airlines: {airlines.Count}\nTotal Flights: {flights.Count}\nTotal Boarding Gates: {boardingGates.Count}";
+            return $"Terminal: {terminalName}\nTotal Airlines: {airlines.Count}\nTotal Boarding Gates: {boardingGates.Count}";
         }
     }
 }
